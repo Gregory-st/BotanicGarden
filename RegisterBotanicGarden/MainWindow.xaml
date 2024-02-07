@@ -17,14 +17,44 @@
             </Border>
             <Grid MinHeight="50">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition MaxWidth="150"/>
+                    <ColumnDefinition MaxWidth="120"/>
                     <ColumnDefinition/>
-                    <ColumnDefinition MaxWidth="200"/>
+                    <ColumnDefinition MaxWidth="120"/>
                 </Grid.ColumnDefinitions>
-                <Button MinHeight="120" materialDesign:ButtonAssist.CornerRadius="10 30 10 30" Style="{StaticResource MaterialDesignFlatAccentBgButton}">
-                    <Image Height="80" Source="/Tree2.png" />
-                </Button>
+                <StackPanel Grid.Column="0">
+                    <Button MinHeight="80" MaxHeight="120" materialDesign:ButtonAssist.CornerRadius="10 30 10 30" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Margin="20 0" Background="#FF79EA00">
+                        <Image Source="/Tree2.png" />
+                    </Button>
+                    <TextBlock HorizontalAlignment="Center" FontSize="20">Войти</TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <Button MinHeight="80" MaxHeight="120" materialDesign:ButtonAssist.CornerRadius="10 30 10 30" Style="{StaticResource MaterialDesignFlatAccentButton}" Margin="20 0" Background="#FFFFCF83" Click="Register_Click">
+                        <Image Source="/Seed1.png"/>
+                    </Button>
+                    <TextBlock HorizontalAlignment="Center" FontSize="20">Регистрация</TextBlock>
+                </StackPanel>
             </Grid>
         </StackPanel>
+
+        <Image Width="200" Source="/Grass1.png" Margin="0,0,-36,-20" RenderTransformOrigin="0.5,0.5" Height="100" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-51.096"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Width="100" Source="/Grass1.png" Margin="0,0,-33,28" RenderTransformOrigin="0.5,0.5" Height="100" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-71.096"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
     </Grid>
 </Window>

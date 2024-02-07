@@ -24,5 +24,11 @@ namespace RegisterBotanicGarden
         {
             InitializeComponent();
         }
+
+        private void Register_Click(object sender, RoutedEventArgs e)
+        {
+            Register1 register1 = new Register1();
+            register1.Show();
+        }
     }
 }
