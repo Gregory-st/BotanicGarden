@@ -24,7 +24,3 @@ D:\Ботанический сад\RegisterBotanicGarden\obj\Debug\RegisterBotan
 D:\Ботанический сад\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.csproj.CopyComplete
 D:\Ботанический сад\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.exe
 D:\Ботанический сад\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.pdb
-D:\Ботанический сад\RegisterBotanicGarden\obj\Debug\Register1.g.cs
-D:\Ботанический сад\RegisterBotanicGarden\obj\Debug\Register1.baml
-D:\Ботанический сад\RegisterBotanicGarden\obj\Debug\AdminPanel1.g.cs
-D:\Ботанический сад\RegisterBotanicGarden\obj\Debug\AdminPanel1.baml
