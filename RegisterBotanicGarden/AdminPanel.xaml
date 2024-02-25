@@ -7,22 +7,22 @@
         xmlns:local="clr-namespace:RegisterBotanicGarden"
         mc:Ignorable="d"
         Title="AdminPanel1" Height="450" Width="800" Background="#FFFFFDC4">
-    <DockPanel LastChildFill="True">
+    <DockPanel x:Name="Content1" LastChildFill="True">
         <Border DockPanel.Dock="Left" MinWidth="50" Background="#9CCA50">
             <Grid>
                 <Button VerticalAlignment="Top" Margin="10" Padding="5" Style="{StaticResource MaterialDesignFlatSecondaryLightButton}" Background="White" materialDesign:ButtonAssist.CornerRadius="10">
                     <Image Source="/Menu1.png"/>
                 </Button>
                 <StackPanel VerticalAlignment="Center">
-                    <Button Margin="5 10" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource MaterialDesignFlatSecondaryButton}" Background="#FFFFFCFC" BorderBrush="#FFFFFCFC"></Button>
-                    <Button Margin="5 10" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource MaterialDesignFlatSecondaryButton}" Background="#FFFFFCFC" BorderBrush="#FFFFFCFC"></Button>
-                    <Button Margin="5 10" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource MaterialDesignFlatSecondaryButton}" Background="#FFFFFCFC" BorderBrush="#FFFFFCFC"></Button>
-                    <Button Margin="5 10" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource MaterialDesignFlatSecondaryButton}" Background="#FFFFFCFC" BorderBrush="#FFFFFCFC"></Button>
+                    <Button x:Name="PersonPage1" Margin="5 10" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource MaterialDesignFlatSecondaryButton}" Background="#FFFFFCFC" BorderBrush="#FFFFFCFC" Click="Pages_Click"></Button>
+                    <Button x:Name="GardenPage1" Margin="5 10" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource MaterialDesignFlatSecondaryButton}" Background="#FFFFFCFC" BorderBrush="#FFFFFCFC" Click="Pages_Click"></Button>
+                    <Button x:Name="InventoryPage1" Margin="5 10" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource MaterialDesignFlatSecondaryButton}" Background="#FFFFFCFC" BorderBrush="#FFFFFCFC" Click="Pages_Click"></Button>
+                    <Button x:Name="TasksPage1" Margin="5 10" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource MaterialDesignFlatSecondaryButton}" Background="#FFFFFCFC" BorderBrush="#FFFFFCFC" Click="Pages_Click"></Button>
                 </StackPanel>
             </Grid>
         </Border>
 
-        <Grid Visibility="Collapsed">
+        <Grid x:Name="Info1">
             <Border VerticalAlignment="Center" Margin="150 0" Background="#FFFFE1B3" CornerRadius="40">
                 <StackPanel Margin="20">
                     <TextBlock FontFamily="Arial" FontSize="20">Информация</TextBlock>
@@ -31,7 +31,7 @@
             </Border>
         </Grid>
 
-        <DockPanel LastChildFill="True" Visibility="Collapsed">
+        <DockPanel x:Name="Persons1" LastChildFill="True" DockPanel.Dock="Top">
             <Grid DockPanel.Dock="Top" MinHeight="60">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -104,11 +104,12 @@
                             </Grid>
                         </Grid>
                     </Border>
+                                       
                 </StackPanel>
             </ScrollViewer>
         </DockPanel>
 
-        <DockPanel LastChildFill="True" Visibility="Collapsed">
+        <DockPanel x:Name="Garden1" LastChildFill="True" DockPanel.Dock="Top">
             <Grid DockPanel.Dock="Top" MinHeight="50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition MaxWidth="200"/>
@@ -129,7 +130,7 @@
             </Border>
         </DockPanel>
 
-        <DockPanel LastChildFill="True" Visibility="Collapsed">
+        <DockPanel x:Name="Inventory1" LastChildFill="True" DockPanel.Dock="Top">
             <Grid DockPanel.Dock="Top" MinHeight="60">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -206,7 +207,7 @@
             </ScrollViewer>
         </DockPanel>
 
-        <DockPanel LastChildFill="True">
+        <DockPanel x:Name="Tasks1" LastChildFill="True" DockPanel.Dock="Top">
             <Grid DockPanel.Dock="Top" MinHeight="60">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -218,7 +219,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition MaxWidth="40"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox x:Name="SearchLine3"  Grid.Column="0" Margin="5 0" materialDesign:HintAssist.Hint="Поиск" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green"></TextBox>
+                        <TextBox x:Name="SearchLine3"  Grid.Column="0" Margin="5 0" materialDesign:HintAssist.Hint="Поиск" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
                         <Button x:Name="SearchButton3"  Grid.Column="1" Margin="5 0" Padding="3" Style="{StaticResource MaterialDesignFlatSecondaryButton}" Background="#FFFDA878" materialDesign:ButtonAssist.CornerRadius="10">
                             <Image Source="/Search1.png"/>
                         </Button>
@@ -236,14 +237,14 @@
 
             <ScrollViewer>
                 <StackPanel Margin="30 10">
-                    <Border MinHeight="200" Background="#FFFFCE70" Margin="0 10" CornerRadius="5 30 40 40">
+                    <!--#region Задание ожидание -->
+                    <Border MinHeight="200" Background="#FFFFCE70" Margin="0 10" MaxWidth="1500" CornerRadius="5 30 40 40">
                         <DockPanel LastChildFill="True">
                             <TextBlock DockPanel.Dock="Top" Margin="5 0 0 0" HorizontalAlignment="Left" FontSize="15" FontStyle="Italic" FontWeight="Medium">Задание</TextBlock>
                             <Grid Margin="15 10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
-                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
                                 <Border Grid.Column="0" Margin="10" Background="#FFF4FF78" CornerRadius="40 10 40 10">
@@ -256,9 +257,95 @@
                                         </ScrollViewer>
                                     </StackPanel>
                                 </Border>
+
+                                <DockPanel Grid.Column="1" LastChildFill="True">
+                                    <Button DockPanel.Dock="Bottom" HorizontalAlignment="Right" Margin="5 0" Padding="20 5" materialDesign:ButtonAssist.CornerRadius="10" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Background="#FFFF9C9C" BorderBrush="#FFFF9C9C">Отмена</Button>
+                                    <StackPanel DockPanel.Dock="Top" Margin="0 10 0 0">
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Статус: Ожидание</TextBlock>
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Издатель: Иванов Иван</TextBlock>
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Дата подачи: 20.02.2024</TextBlock>
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Ответственный: Иванов Иван</TextBlock>
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Срок выполнения: 10 дней</TextBlock>
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Количество человек: 0/2</TextBlock>
+                                    </StackPanel>
+                                </DockPanel>
                             </Grid>
                         </DockPanel>
                     </Border>
+                    <!--#endregion-->
+
+                    <!--#region Задание активное -->
+                    <Border MinHeight="200" Background="#93FF82" Margin="0 10" MaxWidth="1500" CornerRadius="5 30 40 40">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock DockPanel.Dock="Top" Margin="5 0 0 0" HorizontalAlignment="Left" FontSize="15" FontStyle="Italic" FontWeight="Medium">Задание</TextBlock>
+                            <Grid Margin="15 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0" Margin="10" Background="#C4FFBA" CornerRadius="40 10 40 10">
+                                    <StackPanel Margin="15 10">
+                                        <TextBlock FontSize="15" FontWeight="Medium">Комментарий</TextBlock>
+                                        <ScrollViewer MaxHeight="150">
+                                            <TextBlock TextWrapping="Wrap" Margin="0 15 0 0" FontSize="13">
+
+                                            </TextBlock>
+                                        </ScrollViewer>
+                                    </StackPanel>
+                                </Border>
+
+                                <DockPanel Grid.Column="1" LastChildFill="True">
+                                    <StackPanel DockPanel.Dock="Top" Margin="0 10 0 0">
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Статус: Ожидание</TextBlock>
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Издатель: Иванов Иван</TextBlock>
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Дата подачи: 20.02.2024</TextBlock>
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Ответственный: Иванов Иван</TextBlock>
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Срок выполнения: 10 дней</TextBlock>
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Количество человек: 0/2</TextBlock>
+                                    </StackPanel>
+                                </DockPanel>
+                            </Grid>
+                        </DockPanel>
+                    </Border>
+                    <!--#endregion-->
+
+                    <!--#region Задание провал -->
+                    <Border MinHeight="200" Background="#FF8170" Margin="0 10" MaxWidth="1500" CornerRadius="5 30 40 40">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock DockPanel.Dock="Top" Margin="5 0 0 0" HorizontalAlignment="Left" FontSize="15" FontStyle="Italic" FontWeight="Medium">Задание</TextBlock>
+                            <Grid Margin="15 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0" Margin="10" Background="#FFA98D" CornerRadius="40 10 40 10">
+                                    <StackPanel Margin="15 10">
+                                        <TextBlock FontSize="15" FontWeight="Medium">Комментарий</TextBlock>
+                                        <ScrollViewer MaxHeight="150">
+                                            <TextBlock TextWrapping="Wrap" Margin="0 15 0 0" FontSize="13">
+
+                                            </TextBlock>
+                                        </ScrollViewer>
+                                    </StackPanel>
+                                </Border>
+
+                                <DockPanel Grid.Column="1" LastChildFill="True">
+                                    <Button DockPanel.Dock="Bottom" HorizontalAlignment="Right" Margin="5 0" Padding="20 5" materialDesign:ButtonAssist.CornerRadius="10" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Background="#FFC0C0" BorderBrush="#FFC0C0">Удалить</Button>
+                                    <StackPanel DockPanel.Dock="Top" Margin="0 10 0 0">
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Статус: Ожидание</TextBlock>
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Издатель: Иванов Иван</TextBlock>
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Дата подачи: 20.02.2024</TextBlock>
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Ответственный: Иванов Иван</TextBlock>
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Срок выполнения: 10 дней</TextBlock>
+                                        <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">Количество человек: 0/2</TextBlock>
+                                    </StackPanel>
+                                </DockPanel>
+                            </Grid>
+                        </DockPanel>
+                    </Border>
+                    <!--#endregion-->
                 </StackPanel>
             </ScrollViewer>
         </DockPanel>

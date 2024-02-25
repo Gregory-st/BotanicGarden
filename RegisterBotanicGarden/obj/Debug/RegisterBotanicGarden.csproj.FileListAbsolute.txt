@@ -28,3 +28,33 @@ D:\Ботанический сад\RegisterBotanicGarden\obj\Debug\AdminPanel.g.
 D:\Ботанический сад\RegisterBotanicGarden\obj\Debug\RegisterForm1.g.cs
 D:\Ботанический сад\RegisterBotanicGarden\obj\Debug\AdminPanel.baml
 D:\Ботанический сад\RegisterBotanicGarden\obj\Debug\RegisterForm1.baml
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\bin\Debug\RegisterBotanicGarden.exe.config
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\bin\Debug\RegisterBotanicGarden.exe
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\bin\Debug\RegisterBotanicGarden.pdb
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\bin\Debug\MaterialDesignColors.dll
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\bin\Debug\MaterialDesignThemes.Wpf.dll
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\bin\Debug\Microsoft.Xaml.Behaviors.dll
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\bin\Debug\MaterialDesignColors.pdb
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\bin\Debug\MaterialDesignThemes.Wpf.pdb
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\bin\Debug\MaterialDesignThemes.Wpf.xml
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\bin\Debug\Microsoft.Xaml.Behaviors.xml
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.csproj.AssemblyReference.cache
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.csproj.SuggestedBindingRedirects.cache
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\AdminPanel.g.cs
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\MainWindow.g.cs
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterForm1.g.cs
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\App.g.cs
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden_MarkupCompile.cache
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden_MarkupCompile.lref
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\App.baml
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\AdminPanel.baml
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\MainWindow.baml
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterForm1.baml
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.g.resources
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.Properties.Resources.resources
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.csproj.GenerateResource.cache
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.csproj.CoreCompileInputs.cache
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.csproj.CopyComplete
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.exe
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.pdb
