@@ -7,17 +7,31 @@
         xmlns:local="clr-namespace:RegisterBotanicGarden"
         mc:Ignorable="d"
         Title="AdminPanel1" Height="450" Width="800" Background="#FFFFFDC4">
+
+    <Window.Resources>
+        <Style x:Key="CustonButton1" BasedOn="{StaticResource MaterialDesignFlatButton}" TargetType="Button">
+            <Style.Resources>
+                <Color x:Key="PrimaryHueMidBrushColor">#FF4500</Color>
+                <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#FF4500"/>
+            </Style.Resources>
+            <Style.Setters>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="Foreground" Value="Black"/>
+            </Style.Setters>
+        </Style>
+    </Window.Resources>
+    
     <DockPanel x:Name="Content1" LastChildFill="True">
         <Border DockPanel.Dock="Left" MinWidth="50" Background="#9CCA50">
-            <Grid>
-                <Button VerticalAlignment="Top" Margin="10" Padding="5" Style="{StaticResource MaterialDesignFlatSecondaryLightButton}" Background="White" materialDesign:ButtonAssist.CornerRadius="10">
+            <Grid x:Name="MenuContent1" Width="60">
+                <Button x:Name="Menu1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Margin="10" Padding="5" Style="{StaticResource CustonButton1}" Background="White" materialDesign:ButtonAssist.CornerRadius="10" Click="Menu1_Click">
                     <Image Source="/Menu1.png"/>
                 </Button>
                 <StackPanel VerticalAlignment="Center">
-                    <Button x:Name="PersonPage1" Margin="5 10" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource MaterialDesignFlatSecondaryButton}" Background="#FFFFFCFC" BorderBrush="#FFFFFCFC" Click="Pages_Click"></Button>
-                    <Button x:Name="GardenPage1" Margin="5 10" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource MaterialDesignFlatSecondaryButton}" Background="#FFFFFCFC" BorderBrush="#FFFFFCFC" Click="Pages_Click"></Button>
-                    <Button x:Name="InventoryPage1" Margin="5 10" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource MaterialDesignFlatSecondaryButton}" Background="#FFFFFCFC" BorderBrush="#FFFFFCFC" Click="Pages_Click"></Button>
-                    <Button x:Name="TasksPage1" Margin="5 10" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource MaterialDesignFlatSecondaryButton}" Background="#FFFFFCFC" BorderBrush="#FFFFFCFC" Click="Pages_Click"></Button>
+                    <Button x:Name="PersonPage1" Margin="5 10" Visibility="Collapsed" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource CustonButton1}" Click="Pages_Click">Пользователи</Button>
+                    <Button x:Name="GardenPage1" Margin="5 10" Visibility="Collapsed" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource CustonButton1}" Background="#FFFFFCFC" BorderBrush="#FFFFFCFC" Click="Pages_Click">Сад</Button>
+                    <Button x:Name="InventoryPage1" Margin="5 10" Visibility="Collapsed" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource CustonButton1}" Background="#FFFFFCFC" BorderBrush="#FFFFFCFC" Click="Pages_Click">Склад</Button>
+                    <Button x:Name="TasksPage1" Margin="5 10" Visibility="Collapsed" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource CustonButton1}" Background="#FFFFFCFC" BorderBrush="#FFFFFCFC" Click="Pages_Click">Задачи</Button>
                 </StackPanel>
             </Grid>
         </Border>

@@ -58,3 +58,9 @@ G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanic
 G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.csproj.CopyComplete
 G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.exe
 G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.pdb
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\UserPanel1.g.cs
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\UserPanel1.baml
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\UserDialog.g.cs
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\UserDialog.baml
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\Garden.g.cs
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\Garden.baml

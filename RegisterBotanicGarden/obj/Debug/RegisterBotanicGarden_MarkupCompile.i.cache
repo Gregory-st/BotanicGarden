@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Ботанический сад\RegisterBotanicGarden\obj\Debug\
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\
 RegisterBotanicGarden
 none
 false
 DEBUG;TRACE
-D:\Ботанический сад\RegisterBotanicGarden\App.xaml
-3-1926995916
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\App.xaml
+7-1180429807
 
-8-1092450892
-17-1755735187
-AdminPanel.xaml;MainWindow.xaml;RegisterForm1.xaml;
+12-932541793
+17-1551872534
+AdminPanel.xaml;Garden.xaml;InfoItem.xaml;MainWindow.xaml;RegisterForm1.xaml;UserDialog.xaml;UserPanel1.xaml;
 
-False
+True
 

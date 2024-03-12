@@ -16,34 +16,30 @@ using System.Windows.Shapes;
 namespace RegisterBotanicGarden
 {
     /// <summary>
-    /// Логика взаимодействия для AdminPanel.xaml
+    /// Логика взаимодействия для UserPanel1.xaml
     /// </summary>
-    public partial class AdminPanel : Window
+    public partial class UserPanel1 : Window
     {
         private Dictionary<string, UIElement> pairs = new Dictionary<string, UIElement>();
         string lastname = "Null";
         bool reversesize = false;
         int[] targetsize = new int[] { 200, 60 };
 
-        public AdminPanel()
+        public UserPanel1()
         {
             InitializeComponent();
-
             pairs.Add("Null", Info1);
             pairs.Add("PersonPage1", Persons1);
-            pairs.Add("GardenPage1", Garden1);
-            pairs.Add("InventoryPage1", Inventory1);
             pairs.Add("TasksPage1", Tasks1);
 
             foreach (var i in pairs)
-                if(i.Key != "Null")
+                if (i.Key != "Null")
                     Content1.Children.Remove(i.Value);
         }
 
         private void Pages_Click(object sender, RoutedEventArgs e)
         {
-            Button button = (Button)sender;
-
+            var button = (Button)sender;
             if (lastname == button.Name)
             {
                 Content1.Children.Remove(pairs[lastname]);
@@ -67,7 +63,7 @@ namespace RegisterBotanicGarden
 
             reversesize = !reversesize;
 
-            foreach (var i in new UIElement[] { PersonPage1, GardenPage1, InventoryPage1, TasksPage1 })
+            foreach (var i in new UIElement[] { PersonPage1, TasksPage1 })
             {
                 if (reversesize) i.Visibility = Visibility.Visible;
                 else i.Visibility = Visibility.Collapsed;

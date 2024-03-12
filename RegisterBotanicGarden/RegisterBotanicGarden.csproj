@@ -70,10 +70,30 @@
     <Compile Include="AdminPanel.xaml.cs">
       <DependentUpon>AdminPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Garden.xaml.cs">
+      <DependentUpon>Garden.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InfoItem.xaml.cs">
+      <DependentUpon>InfoItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegisterForm1.xaml.cs">
       <DependentUpon>RegisterForm1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserDialog.xaml.cs">
+      <DependentUpon>UserDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserPanel1.xaml.cs">
+      <DependentUpon>UserPanel1.xaml</DependentUpon>
+    </Compile>
     <Page Include="AdminPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Garden.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InfoItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -90,6 +110,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="RegisterForm1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserPanel1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -123,9 +151,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Tree2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Tree2.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\After1.png" />
@@ -216,9 +241,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Tree3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Seed1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />
