@@ -1,7 +1,11 @@
 ﻿
 FG:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\App.xaml;;
+FG:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\AddItemDialog.xaml;;
+FG:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\AddTaskDialog.xaml;;
 FG:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\AdminPanel.xaml;;
 FG:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\Garden.xaml;;
+FG:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\InfoItem.xaml;;
+FG:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\ItemDialog.xaml;;
 FG:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\MainWindow.xaml;;
 FG:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\RegisterForm1.xaml;;
 FG:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\UserDialog.xaml;;

@@ -7,45 +7,47 @@
         xmlns:local="clr-namespace:RegisterBotanicGarden"
         mc:Ignorable="d"
         Title="Garden" Height="450" Width="800" Background="#FFFFFDC4">
-    <Border Margin="75 30">
-        <Grid Width="1500" Height="1500" Background="#B3FF77">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+    <Border Background="#B3FF77" Margin="75 30" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="30">
+        <Viewbox x:Name="Contener1" Stretch="None" Margin="10">
+            <Grid Width="2000" Height="1500" Background="#B3FF77" MouseDown="Grid_MouseDown" MouseUp="Grid_MouseUp" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
-            <Border Grid.Row="0" Grid.Column="0" Width="150" Height="300" BorderBrush="Green" BorderThickness="3" CornerRadius="20">
-                <Grid Margin="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+                <Border Grid.Row="0" Grid.Column="0" Width="150" Height="300" BorderBrush="Green" BorderThickness="3" CornerRadius="20">
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Column="0" Grid.Row="0">
-                        <Button Width="40" Height="40" Padding="2" materialDesign:ButtonAssist.CornerRadius="10" Style="{StaticResource MaterialDesignFlatAccentBgButton}">
-                            <Image Source="/Resources/Grass3.png"/>
-                        </Button>
-                        <TextBlock HorizontalAlignment="Center">Название</TextBlock>
-                    </StackPanel>
-                </Grid>
-            </Border>
-        </Grid>
+                        <StackPanel Grid.Column="0" Grid.Row="0">
+                            <Button Width="40" Height="40" Padding="2" materialDesign:ButtonAssist.CornerRadius="10" Style="{StaticResource MaterialDesignFlatAccentBgButton}">
+                                <Image Source="/Resources/Grass3.png"/>
+                            </Button>
+                            <TextBlock HorizontalAlignment="Center">Название</TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Viewbox>
     </Border>
 </Window>

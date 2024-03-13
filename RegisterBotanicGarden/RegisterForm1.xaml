@@ -6,22 +6,22 @@
         xmlns:local="clr-namespace:RegisterBotanicGarden"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="RegisterForm1" Height="450" Width="800">
+        Title="RegisterForm1" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid Background="#FFFFFDC4">
         <Border Background="#FFEBBC75" Margin="50" CornerRadius="50">
             <DockPanel LastChildFill="True">
-                <StackPanel DockPanel.Dock="Top">
-                    <Border Margin="40 40 40 5" Padding="7" Background="#FFFFE975" CornerRadius="5 15 20 20">
-                        <TextBox Padding="0" materialDesign:HintAssist.Hint="Фамилия" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <StackPanel x:Name="Content1" Margin="40 40 40 0" DockPanel.Dock="Top">
+                    <Border Padding="7" Background="#FFFFE975" CornerRadius="5 15 20 20">
+                        <TextBox x:Name="FName" Padding="0" materialDesign:HintAssist.Hint="Фамилия" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     </Border>
-                    <Border Margin="40 5" Padding="7" Background="#FFFFE975" CornerRadius="5 15 20 20">
-                        <TextBox Padding="0" materialDesign:HintAssist.Hint="Имя" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <Border Margin="0 5" Padding="7" Background="#FFFFE975" CornerRadius="5 15 20 20">
+                        <TextBox x:Name="PersonName1" Padding="0" materialDesign:HintAssist.Hint="Имя" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     </Border>
-                    <Border Margin="40 5" Padding="7" Background="#FFFFE975" CornerRadius="5 15 20 20">
-                        <TextBox Padding="0" materialDesign:HintAssist.Hint="Отчество" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <Border Margin="0 5" Padding="7" Background="#FFFFE975" CornerRadius="5 15 20 20">
+                        <TextBox x:Name="PatherName1" Padding="0" materialDesign:HintAssist.Hint="Отчество" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     </Border>
-                    <Border Margin="40 5 400 5" Padding="7" Background="#FFFFE975" CornerRadius="5 15 20 20">
-                        <DatePicker materialDesign:HintAssist.Hint="Дата рождения" materialDesign:HintAssist.Foreground="#FF7425" Padding="1" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425">
+                    <Border Margin="0 5 400 5" Padding="7" Background="#FFFFE975" CornerRadius="5 15 20 20">
+                        <DatePicker x:Name="DateBorn1" materialDesign:HintAssist.Hint="Дата рождения" materialDesign:HintAssist.Foreground="#FF7425" Padding="1" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425">
                             <DatePicker.Resources>
                                 <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#FF7425"/>
                             </DatePicker.Resources>
@@ -34,14 +34,14 @@
                             </DatePicker.CalendarStyle>
                         </DatePicker>
                     </Border>
-                    <Border Margin="40 5" Padding="7" Background="#FFFFE975" CornerRadius="5 15 20 20" Visibility="Collapsed">
-                        <TextBox Padding="0" materialDesign:HintAssist.Hint="Логин" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <Border Margin="0 5" Padding="7" Background="#FFFFE975" CornerRadius="5 15 20 20" Visibility="Collapsed">
+                        <TextBox x:Name="Login1" Padding="0" materialDesign:HintAssist.Hint="Логин" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     </Border>
-                    <Border Margin="40 5" Padding="7" Background="#FFFFE975" CornerRadius="5 15 20 20" Visibility="Collapsed">
-                        <TextBox Padding="0" materialDesign:HintAssist.Hint="Пароль" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <Border Margin="0 5" Padding="7" Background="#FFFFE975" CornerRadius="5 15 20 20" Visibility="Collapsed">
+                        <TextBox x:Name="Password1" Padding="0" materialDesign:HintAssist.Hint="Пароль" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     </Border>
-                    <Border Margin="40 5" Padding="7" Background="#FFFFE975" CornerRadius="5 15 20 20" Visibility="Collapsed">
-                        <TextBox Padding="0" materialDesign:HintAssist.Hint="Пароль повтор" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <Border Margin="0 5" Padding="7" Background="#FFFFE975" CornerRadius="5 15 20 20" Visibility="Collapsed">
+                        <TextBox x:Name="Password2" Padding="0" materialDesign:HintAssist.Hint="Пароль повтор" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     </Border>
                 </StackPanel>
                 <Grid DockPanel.Dock="Bottom" Margin="40 10 40 15">
@@ -52,8 +52,8 @@
                         <ColumnDefinition MaxWidth="250"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button VerticalAlignment="Bottom" Grid.Column="3" Margin="5 0" Background="#FFFF7425" BorderBrush="#FFFF7425" Foreground="Black">Далее</Button>
-                    <Button VerticalAlignment="Bottom" Grid.Column="2" Margin="5 0" BorderThickness="3" Style="{StaticResource MaterialDesignOutlinedSecondaryLightButton}" BorderBrush="#FFFF7425" Foreground="Black">Отмена</Button>
+                    <Button x:Name="Next1" VerticalAlignment="Bottom" Grid.Column="3" Margin="5 0" Background="#FFFF7425" BorderBrush="#FFFF7425" Foreground="Black" Click="Next1_Click">Далее</Button>
+                    <Button x:Name="Cancel1" VerticalAlignment="Bottom" Grid.Column="2" Margin="5 0" BorderThickness="3" Style="{StaticResource MaterialDesignOutlinedSecondaryLightButton}" BorderBrush="#FFFF7425" Foreground="Black" Click="Cancel1_Click">Отмена</Button>
                 </Grid>
             </DockPanel>
         </Border>

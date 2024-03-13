@@ -64,3 +64,13 @@ G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\UserDialog.g.cs
 G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\UserDialog.baml
 G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\Garden.g.cs
 G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\Garden.baml
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\AddItemDialog.g.cs
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\InfoItem.g.cs
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\AddItemDialog.baml
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\InfoItem.baml
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\AddTaskDialog.g.cs
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\ItemDialog.g.cs
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\AddTaskDialog.baml
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\ItemDialog.baml
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\bin\Debug\Ботанический_сад.accdb
+G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden_Content.g.cs

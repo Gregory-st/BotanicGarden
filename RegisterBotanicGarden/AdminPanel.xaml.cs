@@ -21,6 +21,7 @@ namespace RegisterBotanicGarden
     public partial class AdminPanel : Window
     {
         private Dictionary<string, UIElement> pairs = new Dictionary<string, UIElement>();
+        public Window ParentForm { get; set; } = null;
         string lastname = "Null";
         bool reversesize = false;
         int[] targetsize = new int[] { 200, 60 };
@@ -28,16 +29,11 @@ namespace RegisterBotanicGarden
         public AdminPanel()
         {
             InitializeComponent();
-
-            pairs.Add("Null", Info1);
-            pairs.Add("PersonPage1", Persons1);
-            pairs.Add("GardenPage1", Garden1);
-            pairs.Add("InventoryPage1", Inventory1);
-            pairs.Add("TasksPage1", Tasks1);
-
-            foreach (var i in pairs)
-                if(i.Key != "Null")
-                    Content1.Children.Remove(i.Value);
+        }
+        public AdminPanel(Window perent)
+        {
+            InitializeComponent();
+            ParentForm = perent;
         }
 
         private void Pages_Click(object sender, RoutedEventArgs e)
@@ -72,6 +68,25 @@ namespace RegisterBotanicGarden
                 if (reversesize) i.Visibility = Visibility.Visible;
                 else i.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(ParentForm != null)
+                 ParentForm.Show();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            pairs.Add("Null", Info1);
+            pairs.Add("PersonPage1", Persons1);
+            pairs.Add("GardenPage1", Garden1);
+            pairs.Add("InventoryPage1", Inventory1);
+            pairs.Add("TasksPage1", Tasks1);
+
+            foreach (var i in pairs)
+                if (i.Key != "Null")
+                    Content1.Children.Remove(i.Value);
         }
     }
 }

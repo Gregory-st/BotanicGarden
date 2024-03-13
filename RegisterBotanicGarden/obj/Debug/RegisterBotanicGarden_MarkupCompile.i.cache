@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 G:\Гриша\Buff\BotanicGarden\RegisterBotanicGarden\App.xaml
-7-1180429807
-
-12-932541793
+10904259570
+1144320515
+17-696222804
 17-1551872534
-AdminPanel.xaml;Garden.xaml;InfoItem.xaml;MainWindow.xaml;RegisterForm1.xaml;UserDialog.xaml;UserPanel1.xaml;
+AddItemDialog.xaml;AddTaskDialog.xaml;AdminPanel.xaml;Garden.xaml;InfoItem.xaml;ItemDialog.xaml;MainWindow.xaml;RegisterForm1.xaml;UserDialog.xaml;UserPanel1.xaml;
 
-True
+False
 
