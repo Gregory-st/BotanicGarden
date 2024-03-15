@@ -53,5 +53,10 @@ namespace RegisterBotanicGarden
         }
 
         private void Grid_MouseLeave(object sender, MouseEventArgs e) => mousepress = false;
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

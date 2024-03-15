@@ -48,10 +48,10 @@
         <Border DockPanel.Dock="Left" MinWidth="50" Background="#9CCA50">
             <Grid x:Name="MenuContent1" Width="60">
                 <Button x:Name="Menu1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Margin="10" Padding="5" Style="{StaticResource CustonButton1}" Background="White" materialDesign:ButtonAssist.CornerRadius="10" Click="Menu1_Click">
-                    <Image Source="/Menu1.png"/>
+                    <Image x:Name="MainMenu1" Source="/Menu1.png"/>
                 </Button>
                 <StackPanel VerticalAlignment="Center">
-                    <Button x:Name="PersonPage1" Margin="5 10" Visibility="Collapsed" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource CustonButton1}" Click="Pages_Click">Пользователи</Button>
+                    <Button x:Name="PersonPage1" Margin="5 10" Visibility="Collapsed" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource CustonButton1}" Click="Pages_Click">Личный кабинет</Button>
                     <Button x:Name="TasksPage1" Margin="5 10" Visibility="Collapsed" materialDesign:ButtonAssist.CornerRadius="3 10 15 15" Style="{StaticResource CustonButton1}" Background="#FFFFFCFC" BorderBrush="#FFFFFCFC" Click="Pages_Click">Задачи</Button>
                 </StackPanel>
             </Grid>
@@ -76,17 +76,17 @@
                                 <ColumnDefinition MaxWidth="600"/>
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0" Padding="10" Width="120" Height="120" Style="{StaticResource ProfileButton}" materialDesign:ButtonAssist.CornerRadius="15">
-                                <Image Source="/Resources/Profil1.png"/>
+                                <Image x:Name="PersonPhoto1" Source="/Resources/Profil1.png"/>
                             </Button>
                             <StackPanel Grid.Column="1">
                                 <Border Background="#FFDAFF70" CornerRadius="2 5 10 10" Padding="10 0" Margin="10 0 0 10">
-                                    <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}">Имя</TextBlock>
+                                    <TextBlock x:Name="PersonName1" Style="{StaticResource MaterialDesignBody1TextBlock}">Имя</TextBlock>
                                 </Border>
                                 <Border Background="#FFDAFF70" CornerRadius="2 5 10 10" Padding="10 0" Margin="10 5 0 15">
-                                    <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}">Фамилия</TextBlock>
+                                    <TextBlock x:Name="PersonFName1" Style="{StaticResource MaterialDesignBody1TextBlock}">Фамилия</TextBlock>
                                 </Border>
                                 <Border Background="#FFDAFF70" CornerRadius="2 5 10 10" Padding="10 0" Margin="10 0 0 0">
-                                    <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}">Отчество</TextBlock>
+                                    <TextBlock x:Name="PersonPName1" Style="{StaticResource MaterialDesignBody1TextBlock}">Отчество</TextBlock>
                                 </Border>
                             </StackPanel>
                         </Grid>
@@ -94,16 +94,16 @@
                     <Border DockPanel.Dock="Bottom" MinHeight="120" Margin="0 10 0 20" Background="#FFFB9A" CornerRadius="20 20 5 5">
                         <StackPanel Margin="15">
                             <Border MinHeight="30" Background="#FFDAFF70" Margin="0 5" CornerRadius="2 5 10 10">
-                                <TextBlock VerticalAlignment="Center" Margin="10 5" Style="{StaticResource MaterialDesignHeadline6TextBlock}">Должность</TextBlock>
+                                <TextBlock x:Name="PersonRole1" VerticalAlignment="Center" Margin="10 5" Style="{StaticResource MaterialDesignHeadline6TextBlock}">Должность</TextBlock>
                             </Border>
                             <Border MinHeight="30" Background="#FFDAFF70" Margin="0 5" CornerRadius="2 5 10 10">
-                                <TextBlock VerticalAlignment="Center" Margin="10 5" Style="{StaticResource MaterialDesignHeadline6TextBlock}">Дата рождения</TextBlock>
+                                <TextBlock x:Name="PersonDate1" VerticalAlignment="Center" Margin="10 5" Style="{StaticResource MaterialDesignHeadline6TextBlock}">Дата рождения</TextBlock>
                             </Border>
                             <Border MinHeight="30" Background="#FFDAFF70" Margin="0 5" CornerRadius="2 5 10 10">
-                                <TextBlock VerticalAlignment="Center" Margin="10 5" Style="{StaticResource MaterialDesignHeadline6TextBlock}">Логин</TextBlock>
+                                <TextBlock x:Name="PersonLogin1" VerticalAlignment="Center" Margin="10 5" Style="{StaticResource MaterialDesignHeadline6TextBlock}">Логин</TextBlock>
                             </Border>
                             <Border MinHeight="30" Background="#FFDAFF70" Margin="0 5" CornerRadius="2 5 10 10">
-                                <TextBlock VerticalAlignment="Center" Margin="10 5" Style="{StaticResource MaterialDesignHeadline6TextBlock}">Пароль</TextBlock>
+                                <TextBlock x:Name="PersonPassword1" VerticalAlignment="Center" Margin="10 5" Style="{StaticResource MaterialDesignHeadline6TextBlock}">Пароль</TextBlock>
                             </Border>
                         </StackPanel>
                     </Border>
@@ -124,7 +124,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBox x:Name="SearchLine3"  Grid.Column="0" Margin="5 0" materialDesign:HintAssist.Hint="Поиск" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
                         <Button x:Name="SearchButton3"  Grid.Column="1" Margin="5 0" Padding="3" Style="{StaticResource MaterialDesignFlatSecondaryButton}" Background="#FFFDA878" materialDesign:ButtonAssist.CornerRadius="10">
-                            <Image Source="/Search1.png"/>
+                            <Image x:Name="SearchImage1" Source="/Search1.png"/>
                         </Button>
                     </Grid>
                 </Border>

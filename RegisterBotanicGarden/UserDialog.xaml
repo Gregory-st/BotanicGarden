@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegisterBotanicGarden"
         mc:Ignorable="d"
-        Title="UserDialog" Height="450" Width="800" Background="#FFFFFDC4">
+        Title="UserDialog" Height="600" Width="800" Background="#FFFFFDC4" Loaded="Window_Loaded">
 
     <Window.Resources>
         <Style x:Key="ProfileButton" BasedOn="{StaticResource MaterialDesignFlatButton}" TargetType="{x:Type Button}">
@@ -24,6 +24,15 @@
 
     <Border VerticalAlignment="Center" MinHeight="100" MaxWidth="800" Margin="30" Background="#EBBC75" CornerRadius="20">
         <DockPanel Margin="10">
+            <Grid DockPanel.Dock="Bottom" Margin="0 5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition MaxWidth="300"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="AfterButton1" Grid.Column="3" materialDesign:ButtonAssist.CornerRadius="10 2 10 10" Style="{StaticResource MaterialDesignFlatSecondaryMidBgButton}" Background="#FFFFFB9A" BorderBrush="#FFFFFB9A" Click="Button_Click">Изменить</Button>
+            </Grid>
             <Border DockPanel.Dock="Top" MinHeight="60" Margin="0 5 0 0" Background="#FFFB9A" CornerRadius="5 5 20 20">
                 <Grid Margin="15">
                     <Grid.ColumnDefinitions>
@@ -31,17 +40,17 @@
                         <ColumnDefinition MaxWidth="600"/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" Padding="10" Width="120" Height="120" Style="{StaticResource ProfileButton}" materialDesign:ButtonAssist.CornerRadius="15">
-                        <Image Source="/Resources/Profil1.png"/>
+                        <Image x:Name="UserPhoto1" Source="/Resources/Profil1.png"/>
                     </Button>
                     <StackPanel Grid.Column="1">
                         <Border Background="#FFDAFF70" CornerRadius="2 5 10 10" Padding="10 2" Margin="10 0 0 10">
-                            <TextBox materialDesign:HintAssist.Hint="Имя" materialDesign:TextFieldAssist.UnderlineBrush="#32CD32" materialDesign:HintAssist.Foreground="#32CD32" Padding="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                            <TextBox x:Name="UserName1" materialDesign:HintAssist.Hint="Имя" materialDesign:TextFieldAssist.UnderlineBrush="#32CD32" materialDesign:HintAssist.Foreground="#32CD32" Padding="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         </Border>
                         <Border Background="#FFDAFF70" CornerRadius="2 5 10 10" Padding="10 2" Margin="10 5 0 15">
-                            <TextBox materialDesign:HintAssist.Hint="Фамилия" materialDesign:TextFieldAssist.UnderlineBrush="#32CD32" materialDesign:HintAssist.Foreground="#32CD32" Padding="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                            <TextBox x:Name="UserFName1" materialDesign:HintAssist.Hint="Фамилия" materialDesign:TextFieldAssist.UnderlineBrush="#32CD32" materialDesign:HintAssist.Foreground="#32CD32" Padding="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         </Border>
                         <Border Background="#FFDAFF70" CornerRadius="2 5 10 10" Padding="10 2" Margin="10 0 0 0">
-                            <TextBox materialDesign:HintAssist.Hint="Отчество" materialDesign:TextFieldAssist.UnderlineBrush="#32CD32" materialDesign:HintAssist.Foreground="#32CD32" Padding="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                            <TextBox x:Name="UserPName1" materialDesign:HintAssist.Hint="Отчество" materialDesign:TextFieldAssist.UnderlineBrush="#32CD32" materialDesign:HintAssist.Foreground="#32CD32" Padding="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         </Border>
                     </StackPanel>
                 </Grid>
@@ -50,16 +59,27 @@
                 <ScrollViewer Margin="10 5">
                     <StackPanel Margin="15">
                         <Border MinHeight="30" Background="#FFDAFF70" Margin="0 5" CornerRadius="2 5 10 10">
-                            <TextBox Margin="10 5" materialDesign:HintAssist.Hint="Должность" materialDesign:TextFieldAssist.UnderlineBrush="#32CD32" materialDesign:HintAssist.Foreground="#32CD32" Padding="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                            <ComboBox x:Name="UserRole1" Margin="10 5" materialDesign:HintAssist.Hint="Должность" materialDesign:TextFieldAssist.UnderlineBrush="#32CD32" materialDesign:HintAssist.Foreground="#32CD32" Padding="1" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
                         </Border>
                         <Border MinHeight="30" Background="#FFDAFF70" Margin="0 5" CornerRadius="2 5 10 10">
-                            <TextBox Margin="10 5" materialDesign:HintAssist.Hint="Дата рождения" materialDesign:TextFieldAssist.UnderlineBrush="#32CD32" materialDesign:HintAssist.Foreground="#32CD32" Padding="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                            <DatePicker x:Name="UserDate1" Margin="10 5" materialDesign:HintAssist.Hint="Дата рождения" materialDesign:TextFieldAssist.UnderlineBrush="#32CD32" materialDesign:HintAssist.Foreground="#32CD32" Padding="1" Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                                <DatePicker.Resources>
+                                    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#32CD32"/>
+                                </DatePicker.Resources>
+                                <DatePicker.CalendarStyle>
+                                    <Style TargetType="Calendar" BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
+                                        <Style.Resources>
+                                            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#5EAB06"/>
+                                        </Style.Resources>
+                                    </Style>
+                                </DatePicker.CalendarStyle>
+                            </DatePicker>
                         </Border>
                         <Border MinHeight="30" Background="#FFDAFF70" Margin="0 5" CornerRadius="2 5 10 10">
-                            <TextBox Margin="10 5" materialDesign:HintAssist.Hint="Логин" materialDesign:TextFieldAssist.UnderlineBrush="#32CD32" materialDesign:HintAssist.Foreground="#32CD32" Padding="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                            <TextBox x:Name="UserLogin1" Margin="10 5" materialDesign:HintAssist.Hint="Логин" materialDesign:TextFieldAssist.UnderlineBrush="#32CD32" materialDesign:HintAssist.Foreground="#32CD32" Padding="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         </Border>
                         <Border MinHeight="30" Background="#FFDAFF70" Margin="0 5" CornerRadius="2 5 10 10">
-                            <TextBox Margin="10 5" materialDesign:HintAssist.Hint="Пароль" materialDesign:TextFieldAssist.UnderlineBrush="#32CD32" materialDesign:HintAssist.Foreground="#32CD32" Padding="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                            <TextBox x:Name="UserPassword1" Margin="10 5" materialDesign:HintAssist.Hint="Пароль" materialDesign:TextFieldAssist.UnderlineBrush="#32CD32" materialDesign:HintAssist.Foreground="#32CD32" Padding="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         </Border>
                     </StackPanel>
                 </ScrollViewer>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RegisterBotanicGarden"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" Background="#FFFFFDC4" Closing="Window_Closing">
+        Title="MainWindow" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" Background="#FFFFFDC4" Closing="Window_Closing" Closed="Window_Closed">
     <Grid>
         <StackPanel VerticalAlignment="Center" Margin="200 0 200 0" MaxWidth="700" MinHeight="100">
             <Border Padding="20 10" Background="White" CornerRadius="10 30 10 30">
@@ -22,10 +22,10 @@
                     <ColumnDefinition MaxWidth="200"/>
                 </Grid.ColumnDefinitions>
                 <Button x:Name="SigIn" Grid.Column="0" Width="100" Height="100" materialDesign:ButtonAssist.CornerRadius="10 30 10 30" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Click="SigIn_Click">
-                    <Image Height="80" Source="/Resources/Tree2.png" />
+                    <Image x:Name="LoginImage1" Height="80" Source="/Resources/Tree2.png" />
                 </Button>
                 <Button x:Name="Register" Grid.Column="2" Width="100" Height="100" materialDesign:ButtonAssist.CornerRadius="10 30 10 30" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Background="#FFFDCF78" BorderBrush="#FFFDCF78" Click="Register_Click">
-                    <Image Height="80" Source="/Resources/Seed1.png" />
+                    <Image x:Name="RegisterImage1" Height="80" Source="/Resources/Seed1.png" />
                 </Button>
             </Grid>
         </StackPanel>

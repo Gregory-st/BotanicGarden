@@ -23,13 +23,15 @@ namespace RegisterBotanicGarden
     /// </summary>
     public partial class MainWindow : Window
     {
-        Dictionary<string, Window> users = new Dictionary<string, Window>();
+        public Dictionary<string, Window> users = new Dictionary<string, Window>();
         public MainWindow()
         {
             InitializeComponent();
             DataBaseWorker.OpenConnection();
-            users.Add("Admin", new AdminPanel(this));
-            users.Add("User", new UserPanel1(this));
+            users.Add("Admin", new AdminPanel());
+            users.Add("User", new UserPanel1());
+            LoginImage1.Source = UriImage.GetImage("Tree2.png");
+            RegisterImage1.Source = UriImage.GetImage("Seed1.png");
         }
 
         private void SigIn_Click(object sender, RoutedEventArgs e)
@@ -41,8 +43,18 @@ namespace RegisterBotanicGarden
             {
                 MessageBox.Show($"Доборо пожаловать, {new OleDbCommand($"SELECT Имя FROM Пользователь WHERE Код = {reader[0]}", DataBaseWorker.connection).ExecuteScalar()}", "Система", MessageBoxButton.OK, MessageBoxImage.Information);
                 OleDbCommand command1 = new OleDbCommand($"SELECT Название FROM Должность WHERE Код = (SELECT Код_должности FROM Пользователь WHERE Код = {reader[0]})", DataBaseWorker.connection);
+                OleDbDataAdapter adapter = new OleDbDataAdapter($"SELECT * FROM Пользователи WHERE Логин = '{Login.Text}' AND Пароль = '{Password.Password}'", DataBaseWorker.connection);
+                DataSet data = new DataSet();
+                adapter.Fill(data);
 
-                users[command1.ExecuteScalar().ToString()].Show();
+                string name1 = command1.ExecuteScalar().ToString();
+
+                if (name1 == "Admin")
+                    users[name1] = new AdminPanel(this);
+                else if (name1 == "User")
+                    users[name1] = new UserPanel1(this, data.Tables[0].Rows[0]);
+
+                users[name1].Show();
                 this.Hide();
             }
             else
@@ -103,10 +115,12 @@ namespace RegisterBotanicGarden
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            ((AdminPanel)users["Admin"]).ParentForm = null;
-            ((UserPanel1)users["User"]).ParentForm = null;
-            DataBaseWorker.CloseConnection();
             Application.Current.Shutdown();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            DataBaseWorker.CloseConnection();
         }
     }
 }
