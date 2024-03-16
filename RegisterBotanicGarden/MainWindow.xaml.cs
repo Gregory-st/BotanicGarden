@@ -27,15 +27,17 @@ namespace RegisterBotanicGarden
         public MainWindow()
         {
             InitializeComponent();
-            DataBaseWorker.OpenConnection();
-            users.Add("Admin", new AdminPanel());
-            users.Add("User", new UserPanel1());
+            users.Add("Admin", null);
+            users.Add("User", null);
             LoginImage1.Source = UriImage.GetImage("Tree2.png");
             RegisterImage1.Source = UriImage.GetImage("Seed1.png");
         }
 
         private void SigIn_Click(object sender, RoutedEventArgs e)
         {
+            if(DataBaseWorker.connection.State == ConnectionState.Closed)
+                DataBaseWorker.OpenConnection();
+
             OleDbCommand command = new OleDbCommand($"SELECT Код_пользователя FROM Авторизация WHERE Логин = '{Login.Text}' AND Пароль = '{Password.Password}'", DataBaseWorker.connection);
             OleDbDataReader reader = command.ExecuteReader();
 
@@ -68,6 +70,9 @@ namespace RegisterBotanicGarden
             RegisterForm1 register = new RegisterForm1();
             if(register.ShowDialog().Value)
             {
+                if (DataBaseWorker.connection.State == ConnectionState.Closed)
+                    DataBaseWorker.OpenConnection();
+
                 OleDbDataAdapter adapter = new OleDbDataAdapter("SELECT * FROM Пользователь", DataBaseWorker.connection);
                 DataSet data = new DataSet();
                 DataTable table = null;
