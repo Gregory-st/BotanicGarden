@@ -28,7 +28,7 @@ namespace RegisterBotanicGarden
         bool reversesize = false;
         int[] targetsize = new int[] { 200, 60 };
 
-        BitmapImage[] MainMenuIcon = new BitmapImage[] { UriImage.GetImage("Menu1.png"), UriImage.GetImage("Back1.png") };
+        BitmapImage[] MainMenuIcon = new BitmapImage[] { UriImage.Images["Menu"], UriImage.Images["Back"] };
 
         DataRow user = null;
 
@@ -79,9 +79,9 @@ namespace RegisterBotanicGarden
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            PersonPhoto1.Source = UriImage.GetImage("Profil1.png");
-            SearchImage1.Source = UriImage.GetImage("Search1.png");
-            MainMenu1.Source = UriImage.GetImage("Menu1.png");
+            PersonPhoto1.Source = UriImage.Images["Profil"];
+            SearchImage1.Source = UriImage.Images["Search"];
+            MainMenu1.Source = UriImage.Images["Menu"];
 
             PersonName1.Text = user["Имя"].ToString();
             PersonFName1.Text = user["Фамилия"].ToString();

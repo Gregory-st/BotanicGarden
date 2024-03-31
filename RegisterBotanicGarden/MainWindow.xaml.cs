@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Data.OleDb;
 using System.Data.Common;
 using System.Data;
+using System.IO;
 
 namespace RegisterBotanicGarden
 {
@@ -29,8 +30,8 @@ namespace RegisterBotanicGarden
             InitializeComponent();
             users.Add("Admin", null);
             users.Add("User", null);
-            LoginImage1.Source = UriImage.GetImage("Tree2.png");
-            RegisterImage1.Source = UriImage.GetImage("Seed1.png");
+            LoginImage1.Source = UriImage.Images["Tree"];
+            RegisterImage1.Source = UriImage.Images["Seed"];
         }
 
         private void SigIn_Click(object sender, RoutedEventArgs e)

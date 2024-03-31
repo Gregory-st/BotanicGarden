@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" Background="#FFFFFDC4" Closing="Window_Closing" Closed="Window_Closed">
     <Grid>
-        <StackPanel VerticalAlignment="Center" Margin="200 0 200 0" MaxWidth="700" MinHeight="100">
+        <StackPanel x:Name="Content1" VerticalAlignment="Center" Margin="200 0 200 0" MaxWidth="700" MinHeight="100">
             <Border Padding="20 10" Background="White" CornerRadius="10 30 10 30">
                 <TextBox x:Name="Login" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" materialDesign:HintAssist.Hint="Логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
             </Border>
@@ -21,12 +21,20 @@
                     <ColumnDefinition/>
                     <ColumnDefinition MaxWidth="200"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="SigIn" Grid.Column="0" Width="100" Height="100" materialDesign:ButtonAssist.CornerRadius="10 30 10 30" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Click="SigIn_Click">
-                    <Image x:Name="LoginImage1" Height="80" Source="/Resources/Tree2.png" />
-                </Button>
-                <Button x:Name="Register" Grid.Column="2" Width="100" Height="100" materialDesign:ButtonAssist.CornerRadius="10 30 10 30" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Background="#FFFDCF78" BorderBrush="#FFFDCF78" Click="Register_Click">
-                    <Image x:Name="RegisterImage1" Height="80" Source="/Resources/Seed1.png" />
-                </Button>
+
+                <StackPanel Grid.Column="0">
+                    <Button x:Name="SigIn" Width="100" Height="100" materialDesign:ButtonAssist.CornerRadius="10 30 10 30" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Click="SigIn_Click">
+                        <Image x:Name="LoginImage1" Height="80" Source="/Resources/Tree2.png" />
+                    </Button>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignBody2TextBlock}">Войти</TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2">
+                    <Button x:Name="Register" Width="100" Height="100" materialDesign:ButtonAssist.CornerRadius="10 30 10 30" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Background="#FFFDCF78" BorderBrush="#FFFDCF78" Click="Register_Click">
+                        <Image x:Name="RegisterImage1" Height="80" Source="/Resources/Seed1.png" />
+                    </Button>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignBody2TextBlock}">Регистрация</TextBlock>
+                </StackPanel>
             </Grid>
         </StackPanel>
     </Grid>

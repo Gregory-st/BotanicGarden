@@ -24,7 +24,7 @@ namespace RegisterBotanicGarden
     public partial class AdminPanel : Window
     {
         private Dictionary<string, UIElement> pairs = new Dictionary<string, UIElement>();
-        BitmapImage[] MainMenuIcon1 = new BitmapImage[] { UriImage.GetImage("Menu1.png"), UriImage.GetImage("Back1.png") };
+        BitmapImage[] MainMenuIcon1 = new BitmapImage[] { UriImage.Images["Menu"], UriImage.Images["Back"] };
         public Window ParentForm { get; set; } = null;
         string lastname = "Null";
         bool reversesize = false;
@@ -36,7 +36,7 @@ namespace RegisterBotanicGarden
         Point mousePosition = new Point();
 
         OleDbDataAdapter Users = null;
-        OleDbDataAdapter GardenData = null;
+        Dictionary<string, OleDbDataAdapter> GardenComplex = new Dictionary<string, OleDbDataAdapter>();
         OleDbDataAdapter Inventory = null;
         OleDbDataAdapter Tasks = null;
 
@@ -96,14 +96,17 @@ namespace RegisterBotanicGarden
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            SearchImage1.Source = UriImage.GetImage("Search1.png");
-            SearchImage2.Source = UriImage.GetImage("Search1.png");
-            SearchImage3.Source = UriImage.GetImage("Search1.png");
-            MainMenu1.Source = UriImage.GetImage("Menu1.png");
-            ItemsInfo1.Source = UriImage.GetImage("Info1.png");
-            ItemsDelete1.Source = UriImage.GetImage("Delete1.png");
+            SearchImage1.Source = UriImage.Images["Search"];
+            SearchImage2.Source = UriImage.Images["Search"];
+            SearchImage3.Source = UriImage.Images["Search"];
+            MainMenu1.Source = UriImage.Images["Menu"];
+            ItemsInfo1.Source = UriImage.Images["Info"];
+            ItemsDelete1.Source = UriImage.Images["Delete"];
 
             UpDataUsers();
+            LoadGarden();
+            CellHot1.SelectedIndex = 0;
+            UpDateHotRoom();
 
             pairs.Add("Null", Info1);
             pairs.Add("PersonPage1", Persons1);
@@ -114,9 +117,6 @@ namespace RegisterBotanicGarden
             foreach (var i in pairs)
                 if (i.Key != "Null")
                     Content1.Children.Remove(i.Value);
-
-            CellHot1.Items.Add("Участок 1");
-            CellHot1.SelectedIndex = 0;
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -304,6 +304,57 @@ namespace RegisterBotanicGarden
                 id++;
             }
         }
+        private void UpDateHotRoom()
+        {
+            HotRoomList1.Children.Clear();
+
+            DataSet HotRooms = new DataSet();
+
+            GardenComplex["Участок"].Fill(HotRooms, "Участок");
+            GardenComplex["Теплица"].Fill(HotRooms, "Теплица");
+
+            DataTable table = HotRooms.Tables[0];
+
+            foreach(DataRow i in table.Rows)
+                CellHot1.Items.Add(i["Название"]);
+
+            DataTable rooms1 = HotRooms.Tables[1];
+            int coderoom = CellHot1.SelectedIndex + 1;
+            int index = 0;
+            int x = 0;
+            int y = 0;
+            Button hotroom = null;
+            foreach (DataRow i in rooms1.Rows)
+            {
+                if ((int)i["Код_участка"] != coderoom) continue;
+
+                hotroom = CopyElement.NButton(Teplit1);
+                hotroom.Content = $"{i["Наименовние"]} {i["Номер"]}";
+                hotroom.Name = $"h_{index}_{i["Код"]}";
+                ButtonAssist.SetCornerRadius(hotroom, ButtonAssist.GetCornerRadius(Teplit1));
+                hotroom.Click += Teplit1_Click;
+
+                x = index;
+                if (index >= HotRoomList1.ColumnDefinitions.Count)
+                {
+                    x = index % HotRoomList1.ColumnDefinitions.Count;
+                    y = index / HotRoomList1.ColumnDefinitions.Count;
+                }
+
+                Grid.SetColumn(hotroom, x);
+                Grid.SetRow(hotroom, y);
+
+                HotRoomList1.Children.Add(hotroom);
+                index++;
+            }
+        }
+
+        private void LoadGarden()
+        {
+            string commandskil = "SELECT * FROM ";
+            foreach (var i in new string[] { "Участок", "Теплица", "Грядка", "Растение", "ТипРастения", "Уход" })
+                GardenComplex.Add(i, new OleDbDataAdapter(commandskil + i, DataBaseWorker.connection));
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -460,7 +511,16 @@ namespace RegisterBotanicGarden
 
         private void Teplit1_Click(object sender, RoutedEventArgs e)
         {
-            Garden garden = new Garden();
+            Button b = (Button)sender;
+
+            int idroom = Convert.ToInt32(b.Name.Split('_')[2]);
+            DataSet dataSets = new DataSet();
+
+            GardenComplex["Грядка"].Fill(dataSets, "Грядка");
+            GardenComplex["Растение"].Fill(dataSets, "Растение");
+            GardenComplex["ТипРастения"].Fill(dataSets, "ТипРастения");
+
+            Garden garden = new Garden(idroom, dataSets);
             garden.Show();
         }
     }

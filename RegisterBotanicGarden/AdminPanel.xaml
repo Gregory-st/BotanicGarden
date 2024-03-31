@@ -135,8 +135,14 @@
             </Grid>
 
             <Border DockPanel.Dock="Bottom" Background="Green" Margin="50 30" CornerRadius="30">
-                <Viewbox x:Name="Contener1" Margin="15" Stretch="None">
-                    <Grid Background="Green" Width="3000" Height="3000" MouseDown="Grid_MouseDown" MouseUp="Grid_MouseUp" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave">
+                <StackPanel x:Name="Contener1" Margin="15">
+                    <Grid x:Name="HotRoomList1" Background="Green" Width="3000" Height="3000" MouseDown="Grid_MouseDown" MouseUp="Grid_MouseUp" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave">
+                        <Grid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Добавить"/>
+                                <MenuItem Header="Удалить"/>
+                            </ContextMenu>
+                        </Grid.ContextMenu>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -163,11 +169,11 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <Button x:Name="Teplit1" Grid.Column="0" Grid.Row="0" MinHeight="200" Margin="50 0" materialDesign:ButtonAssist.CornerRadius="30" Padding="2" Style="{StaticResource MaterialDesignFlatSecondaryMidBgButton}" Background="#FF00EA59" BorderBrush="#FF00EA59" Click="Teplit1_Click">
+                        <Button x:Name="Teplit1" Grid.Column="0" Grid.Row="0" MinHeight="200" Margin="50 0" materialDesign:ButtonAssist.CornerRadius="30" Padding="2" Style="{StaticResource MaterialDesignFlatSecondaryMidBgButton}" Background="#FF00EA59" Click="Teplit1_Click" BorderBrush="{x:Null}" Cursor="Hand">
                             Теплица1
                         </Button>
                     </Grid>
-                </Viewbox>
+                </StackPanel>
             </Border>
         </DockPanel>
 

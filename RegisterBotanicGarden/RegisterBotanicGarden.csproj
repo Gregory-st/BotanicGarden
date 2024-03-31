@@ -67,6 +67,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddFloversDialog.xaml.cs">
+      <DependentUpon>AddFloversDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddItemDialog.xaml.cs">
       <DependentUpon>AddItemDialog.xaml</DependentUpon>
     </Compile>
@@ -100,6 +103,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Ботанический_садDataSet.xsd</DependentUpon>
     </Compile>
+    <Page Include="AddFloversDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddItemDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

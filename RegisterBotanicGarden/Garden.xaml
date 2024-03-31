@@ -9,7 +9,7 @@
         Title="Garden" Height="450" Width="800" Background="#FFFFFDC4" Loaded="Window_Loaded">
     <Border Background="#B3FF77" Margin="75 30" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="30">
         <Viewbox x:Name="Contener1" Stretch="None" Margin="10">
-            <Grid Width="2000" Height="1500" Background="#B3FF77" MouseDown="Grid_MouseDown" MouseUp="Grid_MouseUp" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave">
+            <Grid x:Name="Space1" Width="2000" Height="1500" Background="#B3FF77" MouseDown="Grid_MouseDown" MouseUp="Grid_MouseUp" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -28,13 +28,13 @@
 
                 <Grid.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Добавить грядку"></MenuItem>
-                        <MenuItem Header="Удалить грядку"></MenuItem>
+                        <MenuItem Header="Добавить грядку" Click="AddCells"></MenuItem>
+                        <MenuItem Header="Удалить грядку" Click="RemoveCells"></MenuItem>
                     </ContextMenu>
                 </Grid.ContextMenu>
 
-                <Border Grid.Row="0" Grid.Column="0" Width="150" Height="300" BorderBrush="Green" BorderThickness="3" CornerRadius="20">
-                    <Grid Margin="5">
+                <Border x:Name="Cell1" Grid.Row="0" Grid.Column="0" Width="150" Height="300" BorderBrush="Green" BorderThickness="3" CornerRadius="20">
+                    <Grid x:Name="ContentCell1" Margin="5" Background="#FFB3FF77">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -49,12 +49,13 @@
 
                         <Grid.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="Изменить растение"></MenuItem>
-                                <MenuItem Header="Удалить растение"></MenuItem>
+                                <MenuItem Header="Добавить растение" Click="AddFlovers"></MenuItem>
+                                <MenuItem Header="Изменить растение" Click="AfterFlovers"></MenuItem>
+                                <MenuItem Header="Удалить растение" Click="RemoveFlovers"></MenuItem>
                             </ContextMenu>
                         </Grid.ContextMenu>
 
-                        <StackPanel Grid.Column="0" Grid.Row="0">
+                        <StackPanel x:Name="Flover1" Grid.Column="0" Grid.Row="0">
                             <Button Width="40" Height="40" Padding="2" materialDesign:ButtonAssist.CornerRadius="10" Style="{StaticResource MaterialDesignFlatAccentBgButton}">
                                 <Image Source="/Resources/Grass3.png"/>
                             </Button>

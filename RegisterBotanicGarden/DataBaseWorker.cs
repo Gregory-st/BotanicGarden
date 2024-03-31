@@ -114,7 +114,11 @@ namespace RegisterBotanicGarden
                 Margin = prototype.Margin,
                 Padding = prototype.Padding,
                 Width = prototype.Width,
+                MinWidth = prototype.MinWidth,
+                MaxWidth = prototype.MaxWidth,
                 Height = prototype.Height,
+                MinHeight = prototype.MinHeight,
+                MaxHeight = prototype.MaxHeight,
                 RenderSize = prototype.RenderSize,
                 Style = prototype.Style,
                 Background = prototype.Background,
@@ -124,6 +128,8 @@ namespace RegisterBotanicGarden
                 FontSize = prototype.FontSize,
                 Foreground = prototype.Foreground
             };
+
+            ButtonAssist.SetCornerRadius(result, ButtonAssist.GetCornerRadius(prototype));
 
             if (prototype.Content is Image)
                 result.Content = NImage((Image)prototype.Content);
@@ -322,5 +328,19 @@ namespace RegisterBotanicGarden
     {
         public static Uri Url(string name) => new Uri(Path.Combine(Path.GetFullPath("Examples"), name));
         public static BitmapImage GetImage(string name) => new BitmapImage(Url(name));
+
+        private static Dictionary<string, BitmapImage> img = new Dictionary<string, BitmapImage>()
+        {
+            { "Profil", GetImage("Profil1.png") },
+            { "Tree", GetImage("Tree2.png") },
+            { "Seed", GetImage("Seed1.png") },
+            { "Search", GetImage("Search1.png") },
+            { "Menu", GetImage("Menu1.png") },
+            { "Info", GetImage("Info1.png") },
+            { "Delete", GetImage("Delete1.png") },
+            { "Back", GetImage("Back1.png") }
+        };
+
+        public static Dictionary<string, BitmapImage> Images { get => img; }
     }
 }
