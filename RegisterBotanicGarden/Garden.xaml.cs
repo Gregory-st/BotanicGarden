@@ -168,7 +168,16 @@ namespace RegisterBotanicGarden
 
         private void AddFlovers(object sender, RoutedEventArgs e)
         {
-            AddFloversDialog dialog = new AddFloversDialog(null, true);
+            System.Windows.Controls.Primitives.Popup context = ContentCell1.ContextMenu.Parent as System.Windows.Controls.Primitives.Popup;
+            Grid cell = context.PlacementTarget as Grid;
+
+            int idplace = int.Parse(cell.Name.Split('_')[2]);
+
+            AddFloversDialog dialog = new AddFloversDialog();
+
+            dialog.Max = cell.ColumnDefinitions.Count * cell.RowDefinitions.Count;
+            dialog.IdPlace = idplace;
+
             dialog.ShowDialog();
         }
 

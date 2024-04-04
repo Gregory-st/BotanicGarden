@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegisterBotanicGarden"
         mc:Ignorable="d"
-        Title="Garden" Height="450" Width="800" Background="#FFFFFDC4" Loaded="Window_Loaded">
+        Title="Garden" Height="450" Width="800" Background="#FFFFFDC4" Loaded="Window_Loaded" WindowState="Maximized">
     <Border Background="#B3FF77" Margin="75 30" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="30">
         <Viewbox x:Name="Contener1" Stretch="None" Margin="10">
             <Grid x:Name="Space1" Width="2000" Height="1500" Background="#B3FF77" MouseDown="Grid_MouseDown" MouseUp="Grid_MouseUp" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave">

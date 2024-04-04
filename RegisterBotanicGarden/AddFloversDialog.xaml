@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"        
         xmlns:local="clr-namespace:RegisterBotanicGarden"
         mc:Ignorable="d"
-Title="AddFlovers" Height="450" Width="800" Background="#FFFFFDC4" WindowStyle="None" AllowsTransparency="True">
+Title="AddFlovers" Height="450" Width="800" Background="#FFFFFDC4" WindowStyle="None" AllowsTransparency="True" Loaded="Window_Loaded">
     <DockPanel LastChildFill="True">
         <Grid DockPanel.Dock="Bottom" Margin="15 5">
             <Grid.ColumnDefinitions>
@@ -28,11 +28,13 @@ Title="AddFlovers" Height="450" Width="800" Background="#FFFFFDC4" WindowStyle="
                 <DockPanel Margin="10">
                     <Border DockPanel.Dock="Top">
                         <Border Background="#FFFFFDC4" Margin="0 10" Padding="15 5" CornerRadius="5 5 20 20">
-                            <ComboBox x:Name="DescriptionFlover" materialDesign:HintAssist.Hint="Вид растения" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                            <ComboBox x:Name="DescriptionFlover" materialDesign:HintAssist.Hint="Вид растения" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" Style="{StaticResource MaterialDesignFloatingHintComboBox}" SelectionChanged="Select_Flover" >
+                                <ComboBoxItem>Новый вид</ComboBoxItem>
+                            </ComboBox>
                         </Border>
                     </Border>
                     <ScrollViewer DockPanel.Dock="Bottom">
-                        <StackPanel>
+                        <StackPanel x:Name="InfoFlover">
                             <Border Background="#FFFFFDC4" Margin="0 10" Padding="15 5" CornerRadius="5 15 20 20">
                                 <TextBox TextWrapping="Wrap" materialDesign:HintAssist.Hint="Тип" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                             </Border>
@@ -57,15 +59,20 @@ Title="AddFlovers" Height="450" Width="800" Background="#FFFFFDC4" WindowStyle="
             </Border>
 
             <Border Grid.Column="1" Margin="20" Background="#FFFDCF78" CornerRadius="15">
-                <StackPanel Margin="10">
+                <StackPanel x:Name="InfoFlover1" Margin="10">
                     <Border Background="#FFFFFDC4" Margin="0 10" Padding="15 5" CornerRadius="15 5 20 20">
-                        <TextBox TextWrapping="Wrap" materialDesign:HintAssist.Hint="Номер" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                        <ComboBox x:Name="NumberFlover" materialDesign:HintAssist.Hint="Номер" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
                     </Border>
                     <Border Background="#FFFFFDC4" Margin="0 5" Padding="15 5" CornerRadius="15 5 20 20">
-                        <TextBox TextWrapping="Wrap" materialDesign:HintAssist.Hint="Состояние" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                        <TextBox x:Name="StatusFlovewer" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Состояние" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     </Border>
                     <Border Background="#FFFFFDC4" Margin="0 10" Padding="15 5" CornerRadius="5 5 20 20">
-                        <ComboBox x:Name="DescriptionSoft" materialDesign:HintAssist.Hint="Уход" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                        <ComboBox x:Name="DescriptionSoft" materialDesign:HintAssist.Hint="Уход" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" Style="{StaticResource MaterialDesignFloatingHintComboBox}" SelectionChanged="Soft_Select">
+                            <ComboBoxItem>Новый</ComboBoxItem>
+                        </ComboBox>
+                    </Border>
+                    <Border x:Name="TypeSoft" Background="#FFFFFDC4" Margin="0 10" Padding="15 5" CornerRadius="5 5 20 20">
+                        <TextBox TextWrapping="Wrap" materialDesign:HintAssist.Hint="Название ухода" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     </Border>
                 </StackPanel>
             </Border>
