@@ -520,7 +520,7 @@ namespace RegisterBotanicGarden
             GardenComplex["Растение"].Fill(dataSets, "Растение");
             GardenComplex["ТипРастения"].Fill(dataSets, "ТипРастения");
 
-            Garden garden = new Garden(idroom, dataSets);
+            Garden garden = new Garden(idroom);
             garden.Show();
         }
     }

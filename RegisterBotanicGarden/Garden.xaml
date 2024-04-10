@@ -49,8 +49,10 @@
 
                         <Grid.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="Добавить растение" Click="AddFlovers"></MenuItem>
-                                <MenuItem Header="Изменить растение" Click="AfterFlovers"></MenuItem>
+                                <MenuItem Header="Добавить растение" Name="ContentName" Click="AddFlovers"></MenuItem>
+                                <MenuItem Header="Изменить растение" MouseEnter="After_MouseEnter" MouseLeave="After_MouseLeave">
+                                    <ComboBox x:Name="FloverSelect1" materialDesign:HintAssist.Hint="Растение" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" SelectionChanged="FloverSelect1_SelectionChanged"/>
+                                </MenuItem>
                                 <MenuItem Header="Удалить растение" Click="RemoveFlovers"></MenuItem>
                             </ContextMenu>
                         </Grid.ContextMenu>

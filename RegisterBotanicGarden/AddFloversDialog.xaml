@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"        
         xmlns:local="clr-namespace:RegisterBotanicGarden"
         mc:Ignorable="d"
-Title="AddFlovers" Height="450" Width="800" Background="#FFFFFDC4" WindowStyle="None" AllowsTransparency="True" Loaded="Window_Loaded">
+Title="AddFlovers" Height="450" Width="800" Background="#FFFFFDC4" WindowStyle="None" AllowsTransparency="True">
     <DockPanel LastChildFill="True">
         <Grid DockPanel.Dock="Bottom" Margin="15 5">
             <Grid.ColumnDefinitions>

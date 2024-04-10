@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,19 +26,19 @@ namespace RegisterBotanicGarden
         Point mousePosition = new Point();
         int idroom = -1;
         DataSet grass = null;
+        Dictionary<string, OleDbDataAdapter> Grass = new Dictionary<string, OleDbDataAdapter>();
         public Garden()
         {
             InitializeComponent();
         }
 
-        public Garden(int idroom, DataSet grass)
+        public Garden(int idroom)
         {
             InitializeComponent();
 
             this.idroom = idroom;
-            this.grass = grass;
 
-
+            UpdateData();
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -115,6 +116,21 @@ namespace RegisterBotanicGarden
                 index++;
             }
         }
+        private void UpdateData()
+        {
+            if(grass != null)
+                grass.Dispose();
+
+            if(Grass.Count > 0)
+                Grass.Clear();
+
+            grass = new DataSet();
+            foreach (string i in new string[] { "Грядка", "Растение", "ТипРастения" })
+            {
+                Grass.Add(i, new OleDbDataAdapter("SELECT * FROM " + i, DataBaseWorker.connection));
+                Grass[i].Fill(grass, i);
+            }
+        }
 
         private void UpDateCell(ref Grid ContentCell)
         {
@@ -173,22 +189,73 @@ namespace RegisterBotanicGarden
 
             int idplace = int.Parse(cell.Name.Split('_')[2]);
 
-            AddFloversDialog dialog = new AddFloversDialog();
+            AddFloversDialog dialog = new AddFloversDialog(cell.ColumnDefinitions.Count * cell.RowDefinitions.Count, idplace);
 
-            dialog.Max = cell.ColumnDefinitions.Count * cell.RowDefinitions.Count;
-            dialog.IdPlace = idplace;
+            if(dialog.ShowDialog().Value)
+            {
+                DataTable table = grass.Tables["Растение"];
+                DataRow row = table.NewRow();
 
-            dialog.ShowDialog();
-        }
+                row["Код"] = table.Rows.Count + 1;
+                row["Код_грядки"] = idplace;
+                foreach(var i in dialog.keyValuePairs)
+                    row[i.Key] = i.Value;
 
-        private void AfterFlovers(object sender, RoutedEventArgs e)
-        {
+                table.Rows.Add(row);
+                OleDbCommandBuilder builder = new OleDbCommandBuilder(Grass["Растение"]);
+                Grass["Растение"].Update(grass, "Растение");
 
+                UpdateData();
+                UpDateCell(ref cell);
+            }
         }
 
         private void RemoveFlovers(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void FloverSelect1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FloverSelect1.SelectedIndex == -1) return;
+            System.Windows.Controls.Primitives.Popup context = ContentCell1.ContextMenu.Parent as System.Windows.Controls.Primitives.Popup;
+            Grid cell = context.PlacementTarget as Grid;
+
+            AddFloversDialog dialog = null;
+
+            int idplace = int.Parse(cell.Name.Split('_')[2]);
+
+            DataTable table = grass.Tables["Растение"];
+            string[] content = FloverSelect1.SelectedItem.ToString().Split();
+            foreach (DataRow i in table.Rows)
+            {
+                if (!i["Номер"].Equals(content[1]) || !i["Код_грядки"].Equals(idplace)) continue;
+
+                dialog = new AddFloversDialog(i, cell.RowDefinitions.Count * cell.ColumnDefinitions.Count);
+                dialog.ShowDialog();
+                break;
+            }
+
+            OleDbCommandBuilder builder = new OleDbCommandBuilder(Grass["Растение"]);
+            Grass["Растение"].Update(grass, "Растение");
+
+            UpdateData();
+            UpDateCell(ref cell);
+        }
+
+        private void After_MouseEnter(object sender, MouseEventArgs e)
+        {
+            System.Windows.Controls.Primitives.Popup context = ContentCell1.ContextMenu.Parent as System.Windows.Controls.Primitives.Popup;
+            Grid cell = context.PlacementTarget as Grid;
+
+            foreach(StackPanel i in cell.Children)
+                FloverSelect1.Items.Add(((TextBlock)i.Children[1]).Text);
+        }
+
+        private void After_MouseLeave(object sender, MouseEventArgs e)
+        {
+            FloverSelect1.SelectedIndex = -1;
+            FloverSelect1.Items.Clear();
         }
     }
 }

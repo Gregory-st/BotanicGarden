@@ -24,34 +24,38 @@ namespace RegisterBotanicGarden
         DataRow result = null;
         OleDbDataAdapter TypeLoad = new OleDbDataAdapter();
         DataSet TablesFlover = new DataSet();
-
-        public int Max { get; set; } = 10;
-        public int IdPlace { get; set; } = -1;
-        public AddFloversDialog(DataRow Before)
+        public readonly Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
+        int Max = 10;
+        int IdPlace = -1;
+        int FixedNumber = -1;
+        public AddFloversDialog(DataRow Before, int max)
         {
             InitializeComponent();
             result = Before;
 
+            Max = max;
+            FixedNumber = (int)result["Номер"];
+            IdPlace = (int)result["Код_грядки"];
+
+            LoadWindow();
+
             DescriptionFlover.SelectedIndex = (int)result["Код_тип"];
             DescriptionSoft.SelectedIndex = (int)result["Код_ухода"];
-            NumberFlover.Items.Add(result["Номер"]);
+            NumberFlover.SelectedItem = result["Номер"];
             StatusFlovewer.Text = result["Состояние"].ToString();
         }
-        public AddFloversDialog()
+        public AddFloversDialog(int max, int idplace)
         {
             InitializeComponent();
 
-            for (int i = 1; i <= Max; i++)
-                NumberFlover.Items.Add(i);
+            Max = max;
+            IdPlace = idplace;
 
-            foreach (DataRow i in TablesFlover.Tables["Растение"].Rows)
-            {
-                if (IdPlace == -1) break;
-                if ((int)i["Код_грядки"] != IdPlace) continue;
-                NumberFlover.Items.Remove(i["Номер"]);
-            }
+            LoadWindow();
 
             NumberFlover.SelectedIndex = 0;
+            DescriptionFlover.SelectedIndex = 0;
+            DescriptionSoft.SelectedIndex = 0;
         }
 
         private void Done(object sender, RoutedEventArgs e)
@@ -111,6 +115,78 @@ namespace RegisterBotanicGarden
                 return;
             }
 
+            TypeLoad.SelectCommand.Dispose();
+            OleDbCommand command = new OleDbCommand();
+            DataSet addData = new DataSet();
+            DataTable dataTable = null;
+            DataRow row = null;
+            OleDbCommandBuilder builder = null;
+            int idsoft = DescriptionSoft.SelectedIndex;
+            int idtypeflover = DescriptionFlover.SelectedIndex;
+
+            command.Connection = DataBaseWorker.connection;
+
+            if (DescriptionSoft.SelectedIndex == 0)
+            {
+                command.CommandText = "SELECT * FROM Уход";
+                TypeLoad.SelectCommand = command;
+                TextBox textBox = TypeSoft.Child as TextBox;
+
+                TypeLoad.Fill(addData);
+                dataTable = addData.Tables[0];
+                idsoft = dataTable.Rows.Count + 1;
+
+                row = dataTable.NewRow();
+                row["Код"] = idsoft;
+                row["Наименование"] = textBox.Text;
+                dataTable.Rows.Add(row);
+
+                builder = new OleDbCommandBuilder(TypeLoad);
+                TypeLoad.Update(addData);
+
+                row = null;
+                addData.Dispose();
+                addData = new DataSet();
+                builder.Dispose();
+            }
+
+            if(DescriptionFlover.SelectedIndex == 0)
+            {
+                command.CommandText = "SELECT * FROM ТипРастения";
+                TypeLoad.SelectCommand = command;
+
+                TypeLoad.Fill(addData);
+                dataTable = addData.Tables[0];
+                idtypeflover = dataTable.Rows.Count + 1;
+
+                row = dataTable.NewRow();
+                row["Код"] = idtypeflover;
+
+                for (int i = 0; i < InfoFlover.Children.Count; i++)
+                {
+                    Border border = InfoFlover.Children[i] as Border;
+                    TextBox textBox = border.Child as TextBox;
+
+                    row[i + 1] = textBox.Text.Trim(' ');
+                }
+
+                dataTable.Rows.Add(row);
+
+                builder = new OleDbCommandBuilder(TypeLoad);
+                TypeLoad.Update(addData);
+            }
+
+            keyValuePairs.Add("Код_тип", idtypeflover);
+            keyValuePairs.Add("Код_ухода", idsoft);
+            keyValuePairs.Add("Номер", NumberFlover.SelectedItem);
+            keyValuePairs.Add("Состояние", StatusFlovewer.Text);
+
+            if(result != null)
+            {
+                foreach (var i in keyValuePairs)
+                    result[i.Key] = i.Value;
+            }
+
             DialogResult = true;
         }
 
@@ -146,7 +222,7 @@ namespace RegisterBotanicGarden
 
         private void Soft_Select(object sender, SelectionChangedEventArgs e) => TypeSoft.Visibility = (Visibility)(2 - Convert.ToInt32(DescriptionSoft.SelectedIndex == 0) * 2);
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void LoadWindow()
         {
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = DataBaseWorker.connection;
@@ -159,13 +235,21 @@ namespace RegisterBotanicGarden
                 TypeLoad.Fill(TablesFlover, i);
             }
 
+            for (int i = 1; i <= Max; i++)
+                NumberFlover.Items.Add(i);
+
+            foreach (DataRow i in TablesFlover.Tables["Растение"].Rows)
+            {
+                if (IdPlace == -1) break;
+                if (!i["Код_грядки"].Equals(IdPlace) || i["Номер"].Equals(FixedNumber)) continue;
+                NumberFlover.Items.Remove(i["Номер"]);
+            }
+
             foreach (DataRow i in TablesFlover.Tables["ТипРастения"].Rows)
                 DescriptionFlover.Items.Add(i["Вид"].ToString());
 
             foreach (DataRow i in TablesFlover.Tables["Уход"].Rows)
                 DescriptionSoft.Items.Add(i["Наименование"].ToString());
-
-            DescriptionSoft.SelectedIndex = 0;
         }
     }
 }
