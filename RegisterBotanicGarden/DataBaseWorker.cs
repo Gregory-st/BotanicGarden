@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows;
 using System.Data.OleDb;
+using System.Data;
 using MaterialDesignThemes.Wpf;
 using System.IO;
 using System.Windows.Media.Imaging;
@@ -19,6 +20,29 @@ namespace RegisterBotanicGarden
 
         public static void OpenConnection() => connection.OpenAsync();
         public static void CloseConnection() => connection.Close();
+
+        public static void RenumberId(string NameDataTable)
+        {
+            bool connectionisopen = connection.State == ConnectionState.Open;
+
+            if(!connectionisopen) OpenConnection();
+
+            OleDbDataAdapter adapter = new OleDbDataAdapter($"SELECT * FROM {NameDataTable}", connection);
+            DataSet data = new DataSet();
+            DataTable table = null;
+            adapter.Fill(data);
+
+            table = data.Tables[0];
+            for(int i = 0; i < table.Rows.Count; i++)
+            {
+                table.Rows[i]["Код"] = i + 1;
+            }
+
+            OleDbCommandBuilder builder = new OleDbCommandBuilder(adapter);
+            adapter.Update(data);
+
+            if(!connectionisopen) CloseConnection();
+        }
     }
 
     static class Users

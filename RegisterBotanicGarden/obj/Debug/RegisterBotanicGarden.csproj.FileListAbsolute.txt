@@ -169,3 +169,5 @@ E:\str\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.cspro
 E:\str\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.csproj.CopyComplete
 E:\str\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.exe
 E:\str\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.pdb
+E:\str\BotanicGarden\RegisterBotanicGarden\obj\Debug\AddRooms.g.cs
+E:\str\BotanicGarden\RegisterBotanicGarden\obj\Debug\AddRooms.baml

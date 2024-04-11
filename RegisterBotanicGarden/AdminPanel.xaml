@@ -131,7 +131,9 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <ComboBox x:Name="CellHot1" Grid.Column="0" Margin="50 0 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Участок" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425"></ComboBox>
+                <ComboBox x:Name="CellHot1" Grid.Column="0" Margin="50 0 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Участок" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425">
+                    <ComboBoxItem>Новый</ComboBoxItem>
+                </ComboBox>
             </Grid>
 
             <Border DockPanel.Dock="Bottom" Background="Green" Margin="50 30" CornerRadius="30">
@@ -139,8 +141,10 @@
                     <Grid x:Name="HotRoomList1" Background="Green" Width="3000" Height="3000" MouseDown="Grid_MouseDown" MouseUp="Grid_MouseUp" MouseMove="Grid_MouseMove" MouseLeave="Grid_MouseLeave">
                         <Grid.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="Добавить"/>
-                                <MenuItem Header="Удалить"/>
+                                <MenuItem x:Name="RoomAdd1" Header="Добавить" Click="RoomAdd1_Click"/>
+                                <MenuItem Header="Удалить">
+                                    <ComboBox x:Name="RoomRemove1" materialDesign:HintAssist.Hint="Номер" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" SelectionChanged="RoomRemove1_SelectionChanged"/>
+                                </MenuItem>
                             </ContextMenu>
                         </Grid.ContextMenu>
                         <Grid.ColumnDefinitions>

@@ -1,0 +1,40 @@
+﻿<Window x:Class="RegisterBotanicGarden.AddRooms"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:RegisterBotanicGarden"
+        mc:Ignorable="d"
+        Title="AddRooms" Background="#FFFFFDC4" Width="500" Height="300" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Window.Effect>
+        <DropShadowEffect Direction="0" BlurRadius="20" ShadowDepth="0" Color="#FFFFCA93"/>
+    </Window.Effect>
+    <DockPanel>
+        <Grid DockPanel.Dock="Bottom" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="2" Margin="5" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Background="{x:Null}" BorderThickness="3 2 3 2" BorderBrush="#FFFF8F41" Foreground="Black" Click="Cancel_Click">Отмена</Button>
+            <Button Grid.Column="3" Margin="5" Style="{StaticResource MaterialDesignFlatDarkBgButton}" BorderBrush="{x:Null}" Background="#FFFF8F41" Foreground="Black" Click="Done_Click">Готово</Button>
+        </Grid>
+        <Border Background="#FFFFD08A" Margin="50 30" CornerRadius="20">
+            <Grid Margin="20 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Border Margin="5 0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#FFFFFDC4" CornerRadius="2 10 15 15">
+                    <TextBox x:Name="Name1" Margin="10 5" Padding="3" materialDesign:HintAssist.Hint="Название" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                </Border>
+                <Border Margin="5 0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#FFFFFDC4" CornerRadius="10 2 15 15" Grid.Column="1">
+                    <ComboBox x:Name="Number1" Margin="10 5" Padding="3" materialDesign:HintAssist.Hint="Номер" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                </Border>
+            </Grid>
+        </Border>
+    </DockPanel>
+</Window>

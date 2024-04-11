@@ -28,8 +28,12 @@
 
                 <Grid.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Добавить грядку" Click="AddCells"></MenuItem>
-                        <MenuItem Header="Удалить грядку" Click="RemoveCells"></MenuItem>
+                        <MenuItem Header="Добавить грядку">
+                            <ComboBox x:Name="CellAdd1" materialDesign:HintAssist.Hint="Номер" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" SelectionChanged="CellAdd_SelectedChanged"/>
+                        </MenuItem>
+                        <MenuItem Header="Удалить грядку">
+                            <ComboBox x:Name="CellRemove1" materialDesign:HintAssist.Hint="Номер" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" SelectionChanged="CellRemove_SelectedChanged"/>
+                        </MenuItem>
                     </ContextMenu>
                 </Grid.ContextMenu>
 
@@ -53,7 +57,9 @@
                                 <MenuItem Header="Изменить растение" MouseEnter="After_MouseEnter" MouseLeave="After_MouseLeave">
                                     <ComboBox x:Name="FloverSelect1" materialDesign:HintAssist.Hint="Растение" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" SelectionChanged="FloverSelect1_SelectionChanged"/>
                                 </MenuItem>
-                                <MenuItem Header="Удалить растение" Click="RemoveFlovers"></MenuItem>
+                                <MenuItem Header="Удалить растение" MouseEnter="Remove_MouseEnter" MouseLeave="Remove_MouseLeave">
+                                    <ComboBox x:Name="FloverRemove1" materialDesign:HintAssist.Hint="Растение" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" SelectionChanged="FloverRemove1_SelectionChanged" />
+                                </MenuItem>
                             </ContextMenu>
                         </Grid.ContextMenu>
 

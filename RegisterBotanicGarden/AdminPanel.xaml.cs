@@ -523,5 +523,38 @@ namespace RegisterBotanicGarden
             Garden garden = new Garden(idroom);
             garden.Show();
         }
+
+        private void RoomAdd1_Click(object sender, RoutedEventArgs e)
+        {
+            DataSet data = new DataSet();
+            GardenComplex["Теплица"].Fill(data);
+
+            DataRow row = data.Tables[0].NewRow();
+
+            int id = data.Tables[0].Rows.Count + 1; 
+            int max = HotRoomList1.ColumnDefinitions.Count * HotRoomList1.RowDefinitions.Count;
+
+            AddRooms rooms = new AddRooms(row, max, CellHot1.SelectedIndex);
+
+            if(rooms.ShowDialog().Value)
+            {
+                row["Код"] = id;
+
+                data.Tables[0].Rows.Add(row);
+
+                OleDbCommandBuilder builder = new OleDbCommandBuilder(GardenComplex["Теплица"]);
+                GardenComplex["Теплица"].Update(data);
+                builder.Dispose();
+
+                UpDateHotRoom();
+            }
+        }
+
+        private void RoomRemove1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (RoomRemove1.SelectedIndex == -1) return;
+
+
+        }
     }
 }
