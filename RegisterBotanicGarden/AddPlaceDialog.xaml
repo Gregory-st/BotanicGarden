@@ -1,0 +1,28 @@
+﻿<Window x:Name="window" x:Class="RegisterBotanicGarden.AddPlaceDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:RegisterBotanicGarden"
+        mc:Ignorable="d"
+        Title="AddPlaceDialog" Height="300" Width="600" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FFFFFDC4">
+    <Border Background="#FFFCBF8A" VerticalAlignment="Center" MaxWidth="400" MinHeight="50" CornerRadius="10">
+        <DockPanel Margin="10">
+            <Grid DockPanel.Dock="Bottom" Margin="0 15 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="Cancel" Grid.Column="1" Margin="5 0" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Content="Отмена" Foreground="#DD000000" Background="{x:Null}" BorderBrush="#FFED6700" BorderThickness="4 2 4 2" Click="Cancel_Click"/>
+                <Button x:Name="Done" Grid.Column="2" Margin="5 0" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Content="Готово" BorderBrush="{x:Null}" Background="#FFED6700" Foreground="#DD000000" Click="Done_Click"/>
+            </Grid>
+            <StackPanel>
+                <TextBox x:Name="NamePlace1" Margin="0 10" materialDesign:HintAssist.Hint="Наименование" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <ComboBox x:Name="User1" materialDesign:HintAssist.Hint="Ответственный" materialDesign:HintAssist.Foreground="Green" materialDesign:TextFieldAssist.UnderlineBrush="Green" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+            </StackPanel>
+        </DockPanel>
+    </Border>
+</Window>

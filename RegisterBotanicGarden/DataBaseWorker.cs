@@ -10,6 +10,7 @@ using System.Data;
 using MaterialDesignThemes.Wpf;
 using System.IO;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Animation;
 
 namespace RegisterBotanicGarden
 {
@@ -35,6 +36,7 @@ namespace RegisterBotanicGarden
             table = data.Tables[0];
             for(int i = 0; i < table.Rows.Count; i++)
             {
+                if ((int)table.Rows[i]["Код"] == (i + 1)) continue;
                 table.Rows[i]["Код"] = i + 1;
             }
 
@@ -262,6 +264,7 @@ namespace RegisterBotanicGarden
                 {
                     element = NChild(i);
                     grid.Children.Add(element);
+
                     Grid.SetColumn(element, Grid.GetColumn(i));
                     Grid.SetRow(element, Grid.GetRow(i));
                 }
@@ -273,7 +276,20 @@ namespace RegisterBotanicGarden
                 StackPanel stack = (StackPanel)result;
                 foreach (UIElement i in ((StackPanel)parent).Children)
                     stack.Children.Add(NChild(i));
-                return (StackPanel)result;
+                return stack;
+            }
+            else if(parent is DockPanel dock)
+            {
+                result = NDockPanel(dock);
+                DockPanel dockPanel = (DockPanel)result;
+                UIElement element = null;
+                foreach (UIElement i in dock.Children)
+                {
+                    element = NChild(i);
+                    dockPanel.Children.Add(element);
+                    DockPanel.SetDock(element, DockPanel.GetDock(i));
+                }
+                return dockPanel;
             }
 
             return result;

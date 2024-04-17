@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Data.OleDb;
 using System.Data;
 using MaterialDesignThemes.Wpf;
+using System.Runtime.Remoting.Messaging;
 
 namespace RegisterBotanicGarden
 {
@@ -105,8 +106,9 @@ namespace RegisterBotanicGarden
 
             UpDataUsers();
             LoadGarden();
-            CellHot1.SelectedIndex = 0;
-            UpDateHotRoom();
+            UpdateHotCells();
+            CellHot1.SelectedIndex = -1;
+            HotRoomList1.Children.Clear();
 
             pairs.Add("Null", Info1);
             pairs.Add("PersonPage1", Persons1);
@@ -304,22 +306,30 @@ namespace RegisterBotanicGarden
                 id++;
             }
         }
+        private void UpdateHotCells()
+        {
+            for (int i = 1; i < CellHot1.Items.Count; i++)
+                CellHot1.Items.RemoveAt(i);
+
+            DataSet HotRooms = new DataSet();
+
+            GardenComplex["Участок"].Fill(HotRooms);
+
+            DataTable table = HotRooms.Tables[0];
+
+            foreach (DataRow i in table.Rows)
+                CellHot1.Items.Add(i["Название"]);
+        }
         private void UpDateHotRoom()
         {
             HotRoomList1.Children.Clear();
 
             DataSet HotRooms = new DataSet();
 
-            GardenComplex["Участок"].Fill(HotRooms, "Участок");
             GardenComplex["Теплица"].Fill(HotRooms, "Теплица");
 
-            DataTable table = HotRooms.Tables[0];
-
-            foreach(DataRow i in table.Rows)
-                CellHot1.Items.Add(i["Название"]);
-
-            DataTable rooms1 = HotRooms.Tables[1];
-            int coderoom = CellHot1.SelectedIndex + 1;
+            DataTable rooms1 = HotRooms.Tables[0];
+            int coderoom = CellHot1.SelectedIndex;
             int index = 0;
             int x = 0;
             int y = 0;
@@ -554,7 +564,99 @@ namespace RegisterBotanicGarden
         {
             if (RoomRemove1.SelectedIndex == -1) return;
 
+            DataSet data = new DataSet();
+            DataTable table = null;
 
+            GardenComplex["Теплица"].Fill(data);
+            table = data.Tables[0];
+            string[] target = RoomRemove1.SelectedItem.ToString().Split();
+            int id = -1;
+            foreach(DataRow i in table.Rows)
+            {
+                if (i["Наименовние"].ToString() != target[0] || i["Номер"].ToString() != target[1]) continue;
+                id = (int)i[0];
+            }
+
+            RemoveRowTable(new string[] { "Теплица", "Грядка", "Растение" }, new string[] { "Код", "Код_теплицы", "Код_грядки" }, id, 0);
+            UpDateHotRoom();
+        }
+
+        private void CellHot1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(CellHot1.SelectedIndex == 0)
+            {
+                AddPlaceDialog dialog = new AddPlaceDialog();
+                if(dialog.ShowDialog().Value)
+                {
+                    DataSet data = new DataSet();
+                    DataTable table = null;
+
+                    GardenComplex["Участок"].Fill(data);
+                    table = data.Tables[0];
+
+                    DataRow row = table.NewRow();
+                    int id = table.Rows.Count + 1;
+
+                    row["Код"] = id;
+                    row["Название"] = dialog.NamePlace;
+                    row["Код_пользователя"] = dialog.IdUser;
+
+                    table.Rows.Add(row);
+
+                    OleDbCommandBuilder builder = new OleDbCommandBuilder(GardenComplex["Участок"]);
+                    GardenComplex["Участок"].Update(table);
+
+                    UpdateHotCells();
+                    CellHot1.SelectedIndex = CellHot1.Items.Count - 1;
+                    return;
+                }
+                else
+                {
+                    CellHot1.SelectedIndex = -1;
+                    return;
+                }
+            }
+            UpDateHotRoom();
+        }
+
+        private void RoomRemove2_MouseLeave(object sender, MouseEventArgs e) => RoomRemove1.Items.Clear();
+
+        private void RoomRemove2_MouseEnter(object sender, MouseEventArgs e)
+        {
+            foreach(UIElement i in HotRoomList1.Children)
+            {
+                if(i is Button button)
+                    RoomRemove1.Items.Add(button.Content);
+            }
+        }
+
+        private void RemoveRowTable(string[] TableName, string[] ParamsName, int Param, int step)
+        {
+            DataSet data = new DataSet();
+            DataTable table = null;
+
+            GardenComplex[TableName[step]].Fill(data);
+            table = data.Tables[0];
+
+            foreach(DataRow i in table.Rows)
+            {
+                if ((int)i[ParamsName[step]] != Param) continue;
+
+                if (step < TableName.Length - 1)
+                {
+                    RemoveRowTable(TableName, ParamsName, (int)i[0], step + 1);
+                    i.Delete();
+                }
+                else
+                {
+                    i.Delete();
+                }
+            }
+
+            OleDbCommandBuilder builder = new OleDbCommandBuilder(GardenComplex[TableName[step]]);
+            GardenComplex[TableName[step]].Update(data);
+
+            DataBaseWorker.RenumberId(TableName[step]);
         }
     }
 }

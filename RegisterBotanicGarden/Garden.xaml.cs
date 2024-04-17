@@ -319,6 +319,7 @@ namespace RegisterBotanicGarden
 
             DataTable removeFlovers = grass.Tables["Растение"];
             DataTable removeCell = grass.Tables["Грядка"];
+            bool del = false;
             
             for(int i = 0; i < removeCell.Rows.Count; i++)
             {
@@ -330,15 +331,21 @@ namespace RegisterBotanicGarden
                     if (removeFlovers.Rows[j]["Код_грядки"] != removeCell.Rows[i]["Код"]) continue;
 
                     removeFlovers.Rows[j].Delete();
+                    del = true;
                 }
 
                 removeCell.Rows[i].Delete();
                 break;
             }
 
-            OleDbCommandBuilder builder = new OleDbCommandBuilder(Grass["Растение"]);
-            Grass["Растение"].Update(grass, "Растение");
-            builder.Dispose();
+            OleDbCommandBuilder builder = null;
+
+            if (del)
+            {
+                builder = new OleDbCommandBuilder(Grass["Растение"]);
+                Grass["Растение"].Update(grass, "Растение");
+                builder.Dispose();
+            }
 
             builder = new OleDbCommandBuilder(Grass["Грядка"]);
             Grass["Грядка"].Update(grass, "Грядка");
@@ -349,8 +356,9 @@ namespace RegisterBotanicGarden
                 CellAdd1.Items.Add(i);
 
             DataBaseWorker.RenumberId("Грядка");
-            DataBaseWorker.RenumberId("Растение");
+            if(del) DataBaseWorker.RenumberId("Растение");
 
+            UpdateData();
             UpdateSpace1();
         }
     }

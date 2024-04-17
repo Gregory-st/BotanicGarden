@@ -75,6 +75,9 @@
     <Compile Include="AddItemDialog.xaml.cs">
       <DependentUpon>AddItemDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddPlaceDialog.xaml.cs">
+      <DependentUpon>AddPlaceDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddRooms.xaml.cs">
       <DependentUpon>AddRooms.xaml</DependentUpon>
     </Compile>
@@ -113,6 +116,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddItemDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddPlaceDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
