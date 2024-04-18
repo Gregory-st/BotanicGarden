@@ -28,6 +28,7 @@ namespace RegisterBotanicGarden
         BitmapImage[] MainMenuIcon1 = new BitmapImage[] { UriImage.Images["Menu"], UriImage.Images["Back"] };
         public Window ParentForm { get; set; } = null;
         string lastname = "Null";
+        int iduser = -1;
         bool reversesize = false;
         int[] targetsize = new int[] { 200, 60 };
 
@@ -45,10 +46,11 @@ namespace RegisterBotanicGarden
         {
             InitializeComponent();
         }
-        public AdminPanel(Window perent)
+        public AdminPanel(Window perent, int iduser)
         {
             InitializeComponent();
             ParentForm = perent;
+            this.iduser = iduser;
         }
 
         private void Pages_Click(object sender, RoutedEventArgs e)
@@ -223,10 +225,21 @@ namespace RegisterBotanicGarden
                 OleDbCommandBuilder builder = new OleDbCommandBuilder(adapter);
                 adapter.Update(data);
 
+                DataBaseWorker.RenumberId("Авторизация");
+
+                data.Clear();
+                adapter.Dispose();
+
+                adapter = new OleDbDataAdapter($"SELECT * FROM Участок", DataBaseWorker.connection);
+
+                adapter.Fill(data);
                 table = data.Tables[0];
 
-                for (int i = 0; i < table.Rows.Count; i++)
-                    table.Rows[i]["Код"] = i + 1;
+                for(int i = 0; i < table.Rows.Count; i++)
+                {
+                    if (table.Rows[i]["Код_пользователя"].ToString() != substring[1]) continue;
+                    table.Rows[i]["Код_пользователя"] = Convert.DBNull;
+                }
 
                 builder = new OleDbCommandBuilder(adapter);
                 adapter.Update(data);
@@ -246,13 +259,10 @@ namespace RegisterBotanicGarden
                 builder = new OleDbCommandBuilder(adapter);
                 adapter.Update(data);
 
-                table = data.Tables[0];
+                data.Clear();
+                adapter.Dispose();
 
-                for (int i = 0; i < table.Rows.Count; i++)
-                    table.Rows[i]["Код"] = i + 1;
-
-                builder = new OleDbCommandBuilder(adapter);
-                adapter.Update(data);
+                DataBaseWorker.RenumberId("Пользователь");
 
                 UpDataUsers();
             }
@@ -358,7 +368,12 @@ namespace RegisterBotanicGarden
                 index++;
             }
         }
+        private void UpdateTaskList()
+        {
+            TaskListing1.Children.Clear();
 
+
+        }
         private void LoadGarden()
         {
             string commandskil = "SELECT * FROM ";
@@ -509,8 +524,12 @@ namespace RegisterBotanicGarden
 
         private void AddTask1_Click(object sender, RoutedEventArgs e)
         {
-            AddTaskDialog addTask = new AddTaskDialog();
-            addTask.Show();
+            AddTaskDialog addTask = new AddTaskDialog(iduser);
+            
+            if(addTask.ShowDialog().Value)
+            {
+
+            }
         }
 
         private void InfoItem1_Click(object sender, RoutedEventArgs e)
@@ -658,5 +677,7 @@ namespace RegisterBotanicGarden
 
             DataBaseWorker.RenumberId(TableName[step]);
         }
+
+
     }
 }

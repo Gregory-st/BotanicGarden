@@ -222,3 +222,8 @@ D:\Buffer\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.ex
 D:\Buffer\BotanicGarden\RegisterBotanicGarden\obj\Debug\RegisterBotanicGarden.pdb
 D:\Buffer\BotanicGarden\RegisterBotanicGarden\obj\Debug\AddPlaceDialog.g.cs
 D:\Buffer\BotanicGarden\RegisterBotanicGarden\obj\Debug\AddPlaceDialog.baml
+E:\str\BotanicGarden\RegisterBotanicGarden\bin\Debug\DataBaseWorker.dll
+E:\str\BotanicGarden\RegisterBotanicGarden\bin\Debug\DataBaseWorker.pdb
+E:\str\BotanicGarden\RegisterBotanicGarden\bin\Debug\DataBaseWorker.xml
+E:\str\BotanicGarden\RegisterBotanicGarden\obj\Debug\AddPlaceDialog.g.cs
+E:\str\BotanicGarden\RegisterBotanicGarden\obj\Debug\AddPlaceDialog.baml

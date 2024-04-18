@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\Buffer\BotanicGarden\RegisterBotanicGarden\obj\Debug\
+E:\str\BotanicGarden\RegisterBotanicGarden\obj\Debug\
 RegisterBotanicGarden
 none
 false
 DEBUG;TRACE
-D:\Buffer\BotanicGarden\RegisterBotanicGarden\App.xaml
+E:\str\BotanicGarden\RegisterBotanicGarden\App.xaml
 1351215091
 1144320515
 191282522433
-172062511055
+18850083978
 AddFloversDialog.xaml;AddItemDialog.xaml;AddPlaceDialog.xaml;AddRooms.xaml;AddTaskDialog.xaml;AdminPanel.xaml;Garden.xaml;InfoItem.xaml;ItemDialog.xaml;MainWindow.xaml;RegisterForm1.xaml;UserDialog.xaml;UserPanel1.xaml;
 
 False

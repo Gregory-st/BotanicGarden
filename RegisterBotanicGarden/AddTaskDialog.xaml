@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegisterBotanicGarden"
         mc:Ignorable="d"
-        Title="AddTaskDialog" Height="450" Width="800" Background="#FFFFFDC4">
+        Title="AddTaskDialog" Height="600" Width="800" Background="#FFFFFDC4">
 
     <Window.Resources>
         <Style
@@ -52,15 +52,20 @@
                     <ColumnDefinition MaxWidth="150"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="2" Margin="10 0" Style="{StaticResource BackButton}">Отмена</Button>
-                <Button Grid.Column="3" Margin="10 0" Style="{StaticResource NextButton}">Готово</Button>
+                <Button Grid.Column="2" Margin="10 0" Style="{StaticResource BackButton}" Click="Cancel_CLick">Отмена</Button>
+                <Button Grid.Column="3" Margin="10 0" Style="{StaticResource NextButton}" Click="Button_Click">Готово</Button>
             </Grid>
             <StackPanel DockPanel.Dock="Top">
                 <Border MinHeight="30" Margin="0 10" Background="#FFE975" CornerRadius="5 10 15 15">
-                    <TextBox Margin="10" materialDesign:HintAssist.Hint="Тип" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <ComboBox x:Name="TypeTasks" Margin="10" materialDesign:HintAssist.Hint="Тип" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" Style="{StaticResource MaterialDesignFloatingHintComboBox}" SelectionChanged="TypeTasks_SelectionChanged">
+                        <ComboBoxItem>Новый</ComboBoxItem>
+                    </ComboBox>
+                </Border>
+                <Border MinHeight="30" Margin="0 10" Background="#FFE975" CornerRadius="5 10 15 15" Visibility="Collapsed">
+                    <TextBox x:Name="TypeTaskAdd1" Margin="10" materialDesign:HintAssist.Hint="Тип задачи" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                 </Border>
                 <Border MinHeight="40" Margin="0 10" Background="#FFE975" CornerRadius="5 10 15 15">
-                    <TextBox Margin="10" materialDesign:HintAssist.Hint="Задание" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox x:Name="TargetTask1" Margin="10" materialDesign:HintAssist.Hint="Задание" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                 </Border>
 
                 <Grid MinHeight="120" Margin="0 10 0 20">
@@ -71,15 +76,19 @@
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Border Grid.Column="0" Margin="0 5 10 5" Grid.Row="0" Grid.RowSpan="2" Background="#FFE975" CornerRadius="5 10 15 15">
-                        <TextBox Margin="10" materialDesign:HintAssist.Hint="Коментарий" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" TextWrapping="Wrap" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <Border Grid.Column="0" Margin="0 5 10 5" Grid.Row="0" Grid.RowSpan="3" Background="#FFE975" CornerRadius="5 10 15 15">
+                        <TextBox x:Name="MessageTask1" Margin="10" materialDesign:HintAssist.Hint="Коментарий" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" TextWrapping="Wrap" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalScrollBarVisibility="Auto"/>
                     </Border>
                     <Border Grid.Column="1" Margin="10 5 0 5" Grid.Row="0" Background="#FFE975" CornerRadius="5 10 15 15">
-                        <TextBox Margin="10" materialDesign:HintAssist.Hint="Ответсвенный" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" TextWrapping="Wrap" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                        <ComboBox x:Name="MainUser1" Margin="10" materialDesign:HintAssist.Hint="Ответсвенный" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
                     </Border>
                     <Border Grid.Column="1" Margin="10 5 0 5" Grid.Row="1" Background="#FFE975" CornerRadius="5 10 15 15">
-                        <TextBox Margin="10" materialDesign:HintAssist.Hint="Количество человек" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" TextWrapping="Wrap" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                        <ComboBox x:Name="CountUsers1" Margin="10" materialDesign:HintAssist.Hint="Количество человек" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                    </Border>
+                    <Border Grid.Column="1" Margin="10 5 0 5" Grid.Row="2" Background="#FFE975" CornerRadius="5 10 15 15">
+                        <TextBox x:Name="CountDay1" Margin="10" materialDesign:HintAssist.Hint="Количество дней" materialDesign:HintAssist.Foreground="#FF7425" materialDesign:TextFieldAssist.UnderlineBrush="#FF7425" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewKeyDown="CountDay1_PreviewKeyDown"/>
                     </Border>
                 </Grid>
             </StackPanel>

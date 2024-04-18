@@ -53,7 +53,7 @@ namespace RegisterBotanicGarden
                 string name1 = command1.ExecuteScalar().ToString();
 
                 if (name1 == "Admin")
-                    users[name1] = new AdminPanel(this);
+                    users[name1] = new AdminPanel(this, (int)data.Tables[0].Rows[0]["Код"]);
                 else if (name1 == "User")
                     users[name1] = new UserPanel1(this, data.Tables[0].Rows[0]);
 
