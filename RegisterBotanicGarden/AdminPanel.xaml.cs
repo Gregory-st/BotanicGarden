@@ -16,6 +16,7 @@ using System.Data.OleDb;
 using System.Data;
 using MaterialDesignThemes.Wpf;
 using System.Runtime.Remoting.Messaging;
+using DataBaseWorker;
 
 namespace RegisterBotanicGarden
 {
@@ -25,6 +26,7 @@ namespace RegisterBotanicGarden
     public partial class AdminPanel : Window
     {
         private Dictionary<string, UIElement> pairs = new Dictionary<string, UIElement>();
+        private readonly Dictionary<string, Border> pattertask = new Dictionary<string, Border>(); 
         BitmapImage[] MainMenuIcon1 = new BitmapImage[] { UriImage.Images["Menu"], UriImage.Images["Back"] };
         public Window ParentForm { get; set; } = null;
         string lastname = "Null";
@@ -39,8 +41,6 @@ namespace RegisterBotanicGarden
 
         OleDbDataAdapter Users = null;
         Dictionary<string, OleDbDataAdapter> GardenComplex = new Dictionary<string, OleDbDataAdapter>();
-        OleDbDataAdapter Inventory = null;
-        OleDbDataAdapter Tasks = null;
 
         public AdminPanel()
         {
@@ -117,6 +117,10 @@ namespace RegisterBotanicGarden
             pairs.Add("GardenPage1", Garden1);
             pairs.Add("InventoryPage1", Inventory1);
             pairs.Add("TasksPage1", Tasks1);
+
+            pattertask.Add("Wait", TaskWait1);
+            pattertask.Add("Active", TaskActive1);
+            pattertask.Add("Failed", TaskFailed1);
 
             foreach (var i in pairs)
                 if (i.Key != "Null")
@@ -372,7 +376,15 @@ namespace RegisterBotanicGarden
         {
             TaskListing1.Children.Clear();
 
+            DataBaseApplication application = new DataBaseApplication();
+            application.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Ботанический_сад.accdb";
 
+            DataTable table = application.GetDataTable("Стоп_лист");
+
+            foreach (DataRow row in table.Rows)
+            {
+
+            }
         }
         private void LoadGarden()
         {
